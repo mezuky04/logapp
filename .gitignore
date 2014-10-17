@@ -36,3 +36,4 @@ Icon
 .Trashes
 
 vendor/
+.idea/

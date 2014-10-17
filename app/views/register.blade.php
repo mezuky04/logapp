@@ -17,7 +17,97 @@
 
 <!-- BEGIN Countries popup -->
 <div class="countries-popup">
-
+    <div class="countries-list">
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+        <div class="country-item">
+            <img class="country-item-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
+            <div class="country-item-name">Romania</div>
+        </div>
+     </div>
+    <div class="background"></div>
 </div>
 <!-- END Countries popup -->
 

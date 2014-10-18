@@ -73,11 +73,11 @@ class RegisterController extends BaseController {
             return Redirect::to('plans');
         }
 
+        // Render register view with all needed information
         $this->renderView($this->_registerView, array(
             'pageTitle' => $this->_viewTitle,
             'countries' => $this->_getCountries()
         ));
-        //$this->_renderRegisterView(array('pageTitle' => $this->_viewTitle));
     }
 
 
@@ -204,7 +204,7 @@ class RegisterController extends BaseController {
 
     private function _getCountries() {
         $countriesModel = new CountriesModel();
-        return $countriesModel->getAll(array('CountryId', 'Name'));
+        return $countriesModel->get();
     }
 
 

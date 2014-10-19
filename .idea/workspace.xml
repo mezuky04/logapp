@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" name="Default" comment="">
+      <change type="MOVED" beforePath="C:\work\htdocs\logapp\public\javascript\countriesDropdown.js" afterPath="$PROJECT_DIR$/public/javascript/register.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/CountriesModel.php" afterPath="$PROJECT_DIR$/app/models/CountriesModel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascript/countriesDropdown.js" afterPath="$PROJECT_DIR$/public/javascript/countriesDropdown.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/register.blade.php" afterPath="$PROJECT_DIR$/app/views/register.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/style.css" afterPath="$PROJECT_DIR$/public/style.css" />
     </list>
@@ -18,7 +18,7 @@
     <file path="/a.dummy" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1411648161702" ignored="false" />
     <file path="/login.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412360004198" ignored="false" />
     <file path="/UsersModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412770171798" ignored="false" />
-    <file path="/register.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413659526735" ignored="false" />
+    <file path="/register.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413665790610" ignored="false" />
     <file path="/AccountController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1407153014359" ignored="false" />
     <file path="/home.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1407402110645" ignored="false" />
     <file path="/HomeController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1409438980028" ignored="false" />
@@ -32,7 +32,7 @@
     <file path="/header.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1411825027665" ignored="false" />
     <file path="/ContactController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1406214572579" ignored="false" />
     <file path="/contact.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1406214728359" ignored="false" />
-    <file path="/style.css" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413574249793" ignored="false" />
+    <file path="/style.css" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413661674232" ignored="false" />
     <file path="/ApplicationsModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1406993021762" ignored="false" />
     <file path="/application.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1407949111095" ignored="false" />
     <file path="/ApplicationController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1407949056432" ignored="false" />
@@ -84,7 +84,7 @@
     <file path="/PlansController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413175890803" ignored="false" />
     <file path="/SubscriptionPlanFeatures.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412915154934" ignored="false" />
     <file path="/SubscriptionPlanFeaturesModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412915029251" ignored="false" />
-    <file path="/countriesDropdown.js" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413660520763" ignored="false" />
+    <file path="/countriesDropdown.js" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413665726152" ignored="false" />
     <file path="/CountriesModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413635523764" ignored="false" />
     <file path="/CountriesWrapper.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413618605673" ignored="false" />
     <file path="/GetInfoController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413617218990" ignored="false" />
@@ -116,10 +116,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.blade.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="register.blade.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/register.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="109" selection-start="966" selection-end="966" vertical-scroll-proportion="25.576923">
+            <state line="84" column="52" selection-start="3996" selection-end="3996" vertical-scroll-proportion="0.3679487">
               <folding />
             </state>
           </provider>
@@ -128,16 +128,16 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="12" selection-start="5316" selection-end="5316" vertical-scroll-proportion="0.0">
+            <state line="296" column="26" selection-start="6073" selection-end="6073" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="countriesDropdown.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/javascript/countriesDropdown.js">
+      <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascript/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="24" selection-start="346" selection-end="346" vertical-scroll-proportion="0.18681319">
+            <state line="14" column="19" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -146,7 +146,7 @@
       <file leaf-file-name="RegisterController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="203" column="0" selection-start="6073" selection-end="6073" vertical-scroll-proportion="-15.038462">
+            <state line="79" column="32" selection-start="1772" selection-end="1772" vertical-scroll-proportion="-15.038462">
               <folding />
             </state>
           </provider>
@@ -179,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/SubscriptionPlanFeatures.php" />
         <option value="$PROJECT_DIR$/app/models/SubscriptionPlanFeaturesModel.php" />
         <option value="$PROJECT_DIR$/app/views/plans.blade.php" />
         <option value="$PROJECT_DIR$/app/models/SubscriptionDetailsModel.php" />
@@ -190,11 +189,12 @@
         <option value="$PROJECT_DIR$/app/libs/CountriesWrapper/CountriesWrapper.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/RecoverController.php" />
-        <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
         <option value="$PROJECT_DIR$/app/models/CountriesModel.php" />
-        <option value="$PROJECT_DIR$/public/style.css" />
-        <option value="$PROJECT_DIR$/app/views/register.blade.php" />
         <option value="$PROJECT_DIR$/public/javascript/countriesDropdown.js" />
+        <option value="$PROJECT_DIR$/public/style.css" />
+        <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
+        <option value="$PROJECT_DIR$/public/javascript/register.js" />
+        <option value="$PROJECT_DIR$/app/views/register.blade.php" />
       </list>
     </option>
   </component>
@@ -406,7 +406,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -550,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="0" selection-start="6073" selection-end="6073" vertical-scroll-proportion="-15.038462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
@@ -564,23 +557,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/register.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="109" selection-start="966" selection-end="966" vertical-scroll-proportion="25.576923">
+        <state line="79" column="32" selection-start="1772" selection-end="1772" vertical-scroll-proportion="-15.038462">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="12" selection-start="5316" selection-end="5316" vertical-scroll-proportion="0.0">
+        <state line="296" column="26" selection-start="6073" selection-end="6073" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascript/countriesDropdown.js">
+    <entry file="file://$PROJECT_DIR$/public/javascript/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="24" selection-start="346" selection-end="346" vertical-scroll-proportion="0.18681319">
+        <state line="14" column="19" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/register.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="52" selection-start="3996" selection-end="3996" vertical-scroll-proportion="0.3679487">
           <folding />
         </state>
       </provider>

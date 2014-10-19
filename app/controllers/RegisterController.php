@@ -20,11 +20,6 @@ class RegisterController extends BaseController {
     private $_registerView = 'register';
 
     /**
-     * @var string Plans view name
-     */
-    private $_plansView = 'plans';
-
-    /**
      * @var null Subscription plans
      */
     private $_subscriptionPlans = null;
@@ -81,6 +76,9 @@ class RegisterController extends BaseController {
     }
 
 
+    /**
+     * Process user registration
+     */
     public function processRegistration() {
 
         $this->_getUserEmail();
@@ -202,6 +200,9 @@ class RegisterController extends BaseController {
     }
 
 
+    /**
+     * @return array
+     */
     private function _getCountries() {
         $countriesModel = new CountriesModel();
         return $countriesModel->get();

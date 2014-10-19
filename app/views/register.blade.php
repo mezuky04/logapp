@@ -6,8 +6,7 @@
     <title><?php echo $pageTitle; ?></title>
     <link rel="stylesheet" href="<?php echo URL::to('style.css'); ?>">
     <script src="<?php echo URL::to('jquery-min.js'); ?>"></script>
-    <script src="<?php echo URL::to('javascript/ddslick.jquery.min.js'); ?>"></script>
-    <script src="<?php echo URL::to('javascript/countriesDropdown.js'); ?>"></script>
+    <script src="<?php echo URL::to('javascript/register.js'); ?>"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css" rel="stylesheet">
 </head>
 <!-- END head -->
@@ -83,6 +82,7 @@
                 <div class="country">
                     <img class="country-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
                     <div class="prefix">+40</div>
+                    <input type="hidden" value="40">
                 </div>
             </div>
             <input type="text" name="phone-number" class="phone-number-inp" placeholder="Phone number">

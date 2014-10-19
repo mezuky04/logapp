@@ -293,6 +293,10 @@ body {
     background-color: #ecf2f4;
 }
 
+#register-page .phone-number-inp:focus {
+    border-color: #18bc9c;
+}
+
 #register-page .why-phone-number-is-required a {
     color: #18BC9C;
     text-decoration: none;

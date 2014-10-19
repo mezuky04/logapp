@@ -47,6 +47,11 @@ class RegisterController extends BaseController {
      */
     private $_userPhoneNumber = '';
 
+    /**
+     * @var string Default prefix displayed
+     */
+    private $_defaultPrefix = '+40';
+
 
     /**
      * Render register form or subscription plans
@@ -68,10 +73,6 @@ class RegisterController extends BaseController {
 
         // Render register view with all needed information
         return $this->_renderRegisterView();
-//        $this->renderView($this->_registerView, array(
-//            'pageTitle' => $this->_viewTitle,
-//            'countries' => $this->_getCountries()
-//        ));
     }
 
 
@@ -181,6 +182,7 @@ class RegisterController extends BaseController {
     private function _renderRegisterView($variables = array()) {
         $variables['pageTitle'] = $this->_viewTitle;
         $variables['countries'] = $this->_getCountries();
+        $variables['defaultPrefix'] = $this->_defaultPrefix;
         return View::make($this->_registerView, $variables);
     }
 }

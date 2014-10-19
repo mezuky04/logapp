@@ -22,6 +22,21 @@ class PrefixesModel extends BaseModel {
      */
     private $_accountConfig = 'account.';
 
+    /**
+     * @var string Countries table name
+     */
+    private $_countriesTable = 'Countries';
+
+
+    public function getDefaultPrefixAndCountry() {
+        // Build sql
+        $sql = "SELECT {$this->_tableName}.Prefix, {$this->_countriesTable}.Name ";
+        $sql .= "FROM {$this->_tableName} ";
+        $sql .= "JOIN {$this->_countriesTable} ";
+        $sql .= "ON {$this->_tableName}.CountryId = {$this->_countriesTable}.CountryId ";
+        $sql .= "WHERE {$this->_countriesTable}.Name = ".Config::get($this->_accountConfig.'registerDefaultCountry')." ";
+        $sql .= "LIMIT 0,1";
+    }
 
     /**
      * Get PrefixId of the given $prefix

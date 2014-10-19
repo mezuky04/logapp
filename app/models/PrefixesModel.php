@@ -17,17 +17,22 @@ class PrefixesModel extends BaseModel {
      */
     protected $_tableFields = array('PrefixId', 'Prefix', 'CountryId');
 
+    /**
+     * @var string Account config file name
+     */
+    private $_accountConfig = 'account.';
+
 
     /**
      * Get PrefixId of the given $prefix
      *
      * @param string $prefix
      * @return string
-     * @throws InvalidPhoneNumberPrefixException
+     * @throws Exception
      */
     public function getPrefixIdByPrefix($prefix) {
         if (!ctype_digit($prefix)) {
-            throw new InvalidPhoneNumberPrefixException("Given phone number prefix is invalid");
+            throw new Exception("Given phone number prefix is invalid");
         }
         return $this->getOne(array('PrefixId'), array('Prefix' => $prefix));
     }
@@ -38,15 +43,32 @@ class PrefixesModel extends BaseModel {
      *
      * @param string $prefix
      * @return bool True if prefix exists else false
-     * @throws InvalidPhoneNumberPrefixException
+     * @throws Exception
      */
     public function checkIfPrefixExists($prefix) {
         if (!ctype_digit($prefix)) {
-            throw new InvalidPhoneNumberPrefixException("Given phone number prefix is invalid");
+            throw new Exception("Given phone number prefix is invalid");
         }
         if ($this->count(array('Prefix' => $prefix))) {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * Validate the given phone number prefix
+     *
+     * @param string $prefix
+     * @return array
+     */
+    public function validatePhoneNumberPrefix($prefix) {
+        // Check if prefix contain only digit chars, is not too big and exists in database
+        if (!ctype_digit($prefix) || strlen($prefix) > Config::get($this->_accountConfig.'maxPhoneNumberPrefixLength') || !$this->checkIfPrefixExists($prefix)) {
+            return array(
+                'phoneNumberPrefixError' => true,
+                'invalidPhoneNumberPrefix' => true
+            );
+        }
     }
 }

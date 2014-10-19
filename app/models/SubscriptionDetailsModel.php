@@ -53,4 +53,20 @@ class SubscriptionDetailsModel extends BaseModel {
         }
         return true;
     }
+
+
+    /**
+     * Check if the given subscription plan is valid
+     *
+     * @param string $planKey
+     * @return array
+     */
+    public function validateSubscriptionPlan($planKey) {
+        if (!$this->getOne(array('SubscriptionDetailId'), array('Key' => $planKey))) {
+            return array(
+                'subscriptionPlanError' => true,
+                'invalidSubscriptionPlan' => true
+            );
+        }
+    }
 }

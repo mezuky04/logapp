@@ -256,14 +256,15 @@ body {
 
 #register-page .choose-country {
     display: inline-block;
-    width: 90px;
+    width: 94px;
     text-align: center;
     background-color: #ECF2F4;
     padding-left: 7px;
-    padding-top: 9px;
-    padding-bottom: 5px;
+    padding-top: 7px;
+    padding-bottom: 3px;
     border-radius: 3px;
     margin-right: 5px;
+    border: 2px solid #e74c3c;
 }
 
 #register-page .country {
@@ -284,7 +285,7 @@ body {
 #register-page .phone-number-inp {
     display: inline-block;
     height: 40px;
-    width: 230px;
+    width: 226px;
     padding-left: 15px;
     margin: 0 auto;
     outline: none;
@@ -295,6 +296,23 @@ body {
 
 #register-page .phone-number-inp:focus {
     border-color: #18bc9c;
+}
+
+#register-page .phone-number-inp-error {
+    display: inline-block;
+    height: 40px;
+    width: 226px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    outline: none;
+    border: 2px solid #E74C3C;
+    border-radius: 3px;
+    background-color: #ecf2f4;
+}
+
+#register-page .prefix-input {
+    display: none;
 }
 
 #register-page .why-phone-number-is-required a {

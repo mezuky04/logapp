@@ -39,6 +39,16 @@ class UsersModel extends BaseModel {
      */
     private $_searchLimit = 5;
 
+    /**
+     * @var string Account config file name
+     */
+    private $_accountConfig = 'account.';
+
+    /**
+     * @var string Sms config file name
+     */
+    private $_smsConfig = 'sms.';
+
 
     /**
      * Get user id, email and password hash that match the given email
@@ -131,38 +141,6 @@ class UsersModel extends BaseModel {
     public function getUserPassword($email) {
         return DB::table($this->_tableName)->where('Email', $email)->pluck('Password');
     }
-
-
-//    /**
-//     * @param $userId
-//     */
-//    public function sendLogInCode($userId) {
-//
-//        try {
-//            $nexmoSms = new NexmoSms('api key here', 'api secret here');
-//            $nexmoSms->sendSMS('LogApp.co', 1, 'content');
-//        } catch (Exception $e) {
-//            //
-//        }
-//    }
-
-//    public function update($records = array(), $filter = array()) {
-//
-//        $query = DB::table($this->_tableName);
-//        // No records to update, exit from function
-//        if (!count($records)) {
-//            return;
-//        }
-//
-//        // Build query using given filter
-//        if (count($filter)) {
-//            foreach ($filter as $field => $value) {
-//                $query->where($field, $value);
-//            }
-//        }
-//
-//        $query->update($records);
-//    }
 
 
     /**
@@ -319,11 +297,9 @@ class UsersModel extends BaseModel {
     /**
      * Insert new user in database
      *
-     * @param $userDetails
-     * @throws CouldNotInsertNewUserException
-     * @throws CouldNotInsertPhoneNumberException
-     * @throws CouldNotGetCountryIdException
-     * @throws CouldNotGetPrefixIdException
+     * @param array $userDetails
+     * @throws Exception
+
      */
     public function createNewUser($userDetails) {
 
@@ -336,7 +312,7 @@ class UsersModel extends BaseModel {
             'Password' => Hash::make($userDetails['password'])
         ));
         if (!$userId) {
-            throw new CouldNotInsertNewUserException("New user could not be inserted in database");
+            throw new Exception("New user could not be inserted in database");
             DB::rollback();
         }
 
@@ -344,11 +320,11 @@ class UsersModel extends BaseModel {
         $prefixesModel = new PrefixesModel();
         $prefixData = $prefixesModel->getOne(array('PrefixId', 'CountryId'), array('Prefix' => $userDetails['phoneNumberPrefix']));
         if (!$prefixData->Prefix) {
-            throw new CouldNotGetPrefixIdException("Could not get prefix id");
+            throw new Exception("Could not get prefix id");
             DB::rollback();
         }
         if (!$prefixData->CountryId) {
-            throw new CouldNotGetCountryIdException("Could not get country id");
+            throw new Exception("Could not get country id");
             DB::rollback();
         }
         $phoneNumbersModel = new PhoneNumbersModel();
@@ -356,12 +332,87 @@ class UsersModel extends BaseModel {
             'PhoneNumber' => $userDetails['phoneNumber']
         ));
         if (!$phoneNumberId) {
-            throw new CouldNotInsertPhoneNumberException("Could not insert phone number in database");
+            throw new Exception("Could not insert phone number in database");
             DB::rollback();
         }
 
-        // todo Send confirmation email
-        // todo Send sms verification code
+        $this->_sendRegisterEmail();
+        $this->_sendRegisterSmsCode();
+    }
+
+
+    /**
+     * Validate the given email
+     *
+     * @param string $email
+     * @return array
+     */
+    public function validateEmail($email) {
+        // Check if email is empty
+        if (empty($email)) {
+            return array(
+                'emailError' => true,
+                'emptyEmail' => true
+            );
+        }
+
+        // Check if email has a correct format
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return array(
+                'emailError' => true,
+                'invalidEmail' => true
+            );
+        }
+
+        // Check if email is already used
+        if ($this->check('Email', $email)) {
+            return array(
+                'emailError' => true,
+                'alreadyUsedEmail' => true
+            );
+        }
+    }
+
+
+    /**
+     * Validate the given password
+     *
+     * @param string $password
+     * @return array
+     */
+    public function validatePassword($password) {
+        // Check if password is empty
+        if (empty($password)) {
+            return array(
+                'passwordError' => true,
+                'emptyPassword' => true
+            );
+        }
+
+        // Check if password is too short
+        if (strlen($password) < Config::get($this->_accountConfig.'minPasswordLength')) {
+            return array(
+                'passwordError' => true,
+                'tooShortPassword' => true,
+                'passwordLength' => Config::get($this->_accountConfig.'minPasswordLength')
+            );
+        }
+
+        // Check if password contain alphabetic characters
+        if (!preg_match('/[a-z]/i', $password)) {
+            return array(
+                'passwordError' => true,
+                'tooSimplePassword' => true
+            );
+        }
+
+        // Check if password contain numeric characters
+        if (!preg_match('/[0-9]/', $password)) {
+            return array(
+                'passwordError' => true,
+                'tooSimplePassword' => true
+            );
+        }
     }
 
 
@@ -382,11 +433,23 @@ class UsersModel extends BaseModel {
     }
 
 
+    private function _sendRegisterEmail($userEmail) {
+        //
+    }
+
+    private function _sendRegisterSmsCode($verificationCode, $phoneNumber) {
+        $nexmoSms = new NexmoSms(Config::get($this->_smsConfig.'apiKey'), Config::get($this->_smsConfig.'apiSecret'));
+        $nexmoSms->setSMSParams(array(
+            'type' => 'text'
+        ));
+        $nexmoSms->sendSMS('from', 'to', 'content');
+    }
+
     /**
      * Check if all user details are given when creating a new account
      *
      * @param array $details
-     * @throws MissingUserDetailException If a required parameter is missing
+     * @throws Exception If a required parameter is missing
      */
     private function _checkRequiredFieldsForUserDetails($details = array()) {
         $requiredUserDetails = array(
@@ -398,7 +461,7 @@ class UsersModel extends BaseModel {
         );
         foreach ($requiredUserDetails as $requiredUserDetail) {
             if (!in_array($requiredUserDetail, $details)) {
-                throw new MissingUserDetailException("User detail \"{$requiredUserDetail}\" is missing");
+                throw new Exception("User detail \"{$requiredUserDetail}\" is missing");
             }
         }
     }

@@ -7,6 +7,9 @@
  */
 class RegisterController extends BaseController {
 
+    /**
+     * @var string Page title
+     */
     protected $_viewTitle = 'Create new account';
 
     /**
@@ -44,11 +47,6 @@ class RegisterController extends BaseController {
      */
     private $_userPhoneNumber = '';
 
-    /**
-     * @var string Account config file name
-     */
-    private $_accountConfig = 'account.';
-
 
     /**
      * Render register form or subscription plans
@@ -63,16 +61,17 @@ class RegisterController extends BaseController {
         }
 
         // Check if register form or subscription plan view should be displayed
-        $this->_getUserPlan();
+        $this->_selectedPlan = Input::get('subscription-plan');
         if (!isset($this->_selectedPlan) || !$this->_isValidSelectedPlan()) {
             return Redirect::to('plans');
         }
 
         // Render register view with all needed information
-        $this->renderView($this->_registerView, array(
-            'pageTitle' => $this->_viewTitle,
-            'countries' => $this->_getCountries()
-        ));
+        return $this->_renderRegisterView();
+//        $this->renderView($this->_registerView, array(
+//            'pageTitle' => $this->_viewTitle,
+//            'countries' => $this->_getCountries()
+//        ));
     }
 
 
@@ -81,122 +80,58 @@ class RegisterController extends BaseController {
      */
     public function processRegistration() {
 
-        $this->_getUserEmail();
-        $this->_getUserPassword();
-        $this->_getUserPhoneNumberPrefix();
-        $this->_getUserPhoneNumber();
-        $this->_getUserPlan();
-        $this->_createNewAccount();
-    }
-
-
-    /**
-     * Get and validate user email
-     */
-    private function _getUserEmail() {
-
+        // Get and validate email
         $this->_formEmail = Input::get('email');
-
-        // Validate given email
-        if (empty($this->_formEmail)) {
-            $this->_renderRegisterView(array('emailError' => true, 'emptyEmail' => true));
+        $emailErrors = $this->_usersModel->validateEmail($this->_formEmail);
+        if (count($emailErrors)) {
+            return $this->_renderRegisterView($emailErrors);
         }
 
-        if (!filter_var($this->_formEmail, FILTER_VALIDATE_EMAIL)) {
-            $this->_renderRegisterView(array('emailError' => true, 'invalidEmail' => true));
-        }
-
-        if ($this->_usersModel->check('Email', $this->_formEmail)) {
-            $this->_renderRegisterView(array('emailError' => true, 'alreadyUsedEmail' => true));
-        }
-    }
-
-
-    /**
-     * Get and validate user password
-     */
-    private function _getUserPassword() {
-
+        // Get and validate password
         $this->_userPassword = Input::get('password');
-
-        // Validate given password
-        if (empty($this->_userPassword)) {
-            $this->_renderRegisterView(array('passwordError' => true, 'emptyPassword' => true));
+        $passwordErrors = $this->_usersModel->validatePassword($this->_userPassword);
+        if (count($passwordErrors)) {
+            return $this->_renderRegisterView($passwordErrors);
         }
 
-        if (strlen($this->_userPassword) < Config::get($this->_accountConfig.'minPasswordLength')) {
-            $this->_renderRegisterView(array(
-                'passwordError' => true,
-                'tooShortPassword' => true,
-                'passwordLength' => Config::get($this->_accountConfig.'minPasswordLength')
-            ));
-        }
-
-        if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])$/', $this->_userPassword)) {
-            $this->_renderRegisterView(array('passwordError' => true, 'tooSimplePassword' => true));
-        }
-    }
-
-
-    /**
-     * Get and validate user phone number prefix
-     */
-    private function _getUserPhoneNumberPrefix() {
-
+        // Get and validate phone number prefix
         $this->_userPhoneNumberPrefix = Input::get('phone-number-prefix');
-
-        // Validate given phone number prefix
-        if (empty($this->_userPhoneNumberPrefix)) {
-            $this->_renderRegisterView(array('phoneNumberPrefixError' => true, 'emptyPhoneNumberPrefix' => true));
-        }
-
         $prefixesModel = new PrefixesModel();
-        if (!ctype_digit($this->_userPhoneNumberPrefix) || !$prefixesModel->checkIfPrefixExists($this->_userPhoneNumberPrefix)) {
-            $this->_renderRegisterView(array('phoneNumberPrefixError' => true, 'invalidPhoneNumberPrefix' => true));
+        $phoneNumberPrefixErrors = $prefixesModel->validatePhoneNumberPrefix($this->_userPhoneNumberPrefix);
+        if (count($phoneNumberPrefixErrors)) {
+            return $this->_renderRegisterView($phoneNumberPrefixErrors);
         }
 
-        if (strlen($this->_userPhoneNumberPrefix) > Config::get($this->_accountConfig.'maxPhoneNumberPrefixLength')) {
-            $this->_renderRegisterView(array('phoneNumberPrefixError' => true, 'tooLongPhoneNumberPrefix' => true));
+        // Get and validate phone number
+        $this->_userPhoneNumber = Input::get('phone-number');
+        $phoneNumbersModel = new PhoneNumbersModel();
+        $phoneNumberErrors = $phoneNumbersModel->validatePhoneNumber($this->_userPhoneNumber);
+        if (count($phoneNumberErrors)) {
+            return $this->_renderRegisterView($phoneNumberErrors);
         }
 
-        if (strlen($this->_userPhoneNumberPrefix) < Config::get($this->_accountConfig.'minPhoneNumberPrefixLength')) {
-            $this->_renderRegisterView(array('phoneNumberPrefixError' => true, 'tooShortPhoneNumberPrefix'));
-        }
-    }
-
-
-    /**
-     * Get and validate user phone number
-     */
-    private function _getUserPhoneNumber() {
-
-        $this->_userPhoneNumber = input::get('phone-number');
-
-        // Validate given phone number
-        if (empty($this->_userPhoneNumber)) {
-            $this->_renderRegisterView(array('phoneNumberError' => true, 'emptyPhoneNumber' => true));
-        }
-
-        if (!ctype_digit($this->_userPhoneNumber)) {
-            $this->_renderRegisterView(array('phoneNumberError' => true, 'invalidPhoneNumber' => true));
-        }
-
-        if (strlen($this->_userPhoneNumber) > Config::get($this->_accountConfig.'maxPhoneNumberLength')) {
-            $this->_renderRegisterView(array('phoneNumberError' => true, 'tooLongPhoneNumber' => true));
-        }
-
-        if (strlen($this->_userPhoneNumber) < Config::get($this->_accountConfig.'minPhoneNumberLength')) {
-            $this->_renderRegisterView(array('phoneNumberError' => true, 'tooShortPhoneNumber' => true));
-        }
-        // todo Check if phone number is already used
-    }
-
-
-    /**
-     * Get user selected subscription plan
-     */
-    private function _getUserPlan() {
+        // Get and validate subscription plan
         $this->_selectedPlan = Input::get('subscription-plan');
+        $subscriptionDetailsModel = new SubscriptionDetailsModel();
+        $subscriptionPlanErrors = $subscriptionDetailsModel->validateSubscriptionPlan($this->_selectedPlan);
+        if (count($subscriptionPlanErrors)) {
+            return $this->_renderRegisterView($subscriptionPlanErrors);
+        }
+
+        try {
+            // Insert new user in database
+            $this->_usersModel->createNewUser(array(
+                'email' => $this->_formEmail,
+                'password' => $this->_userPassword,
+                'phoneNumber' => $this->_userPhoneNumber,
+                'phoneNumberPrefix' => $this->_userPhoneNumberPrefix,
+                'subscriptionPlan' => $this->_selectedPlan
+            ));
+
+            return Redirect::to('welcome');
+        } catch (Exception $e) {
+            exit($e->getMessage());
+        }
     }
 
 
@@ -210,25 +145,8 @@ class RegisterController extends BaseController {
 
 
     /**
-     * Create new user
+     * @return bool
      */
-    private function _createNewAccount() {
-//        try {
-            $this->_usersModel->createNewUser(array(
-                'email' => $this->_formEmail,
-                'password' => $this->_userPassword,
-                'phoneNumber' => $this->_userPhoneNumber,
-                'phoneNumberPrefix' => $this->_userPhoneNumberPrefix,
-                'subscriptionPlan' => $this->_selectedPlan
-            ));
-//        } catch (MissingUserDetailException $missingUserDetailException) {
-//            //
-//        } catch (CouldNotInsertNewUserException $couldNotInsertNewUserException) {
-//            //
-//        }
-    }
-
-
     private function _isValidSelectedPlan() {
 
         $this->_getSubscriptionPlans();
@@ -254,15 +172,15 @@ class RegisterController extends BaseController {
         $this->_subscriptionPlans = $subscriptionDetailsModel->getSubscriptionPlans();
     }
 
+
     /**
      * Render and make available in register view the given key => value variables
      *
      * @param array $variables key => value pairs to make available in view
      */
     private function _renderRegisterView($variables = array()) {
-        if (!count($variables)) {
-            exit(View::make($this->_registerView));
-        }
-        exit(View::make($this->_registerView, $variables));
+        $variables['pageTitle'] = $this->_viewTitle;
+        $variables['countries'] = $this->_getCountries();
+        return View::make($this->_registerView, $variables);
     }
 }

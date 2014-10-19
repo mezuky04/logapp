@@ -49,7 +49,7 @@
     <form name="register" method="post" action="">
 
         <!-- BEGIN Email input -->
-        <input type="text" name="email" class="register-input<?php if(isset($emailError)): ?>-error<?php endif; ?>" <?php if(isset($_POST['email'])): ?>value="<?php echo $_POST['email']; ?>"<?php endif; ?> placeholder="Email" <?php if(isset($emailError) || (!isset($emailError) && !isset($passwordError) && !isset($invalidLogin))): ?>autofocus<?php endif; ?> autocomplete="off" onfocus="this.value = this.value;">
+        <input type="text" name="email" class="register-input<?php if(isset($emailError)): ?>-error<?php endif; ?>" <?php if(isset($_POST['email'])): ?>value="<?php echo $_POST['email']; ?>"<?php endif; ?> placeholder="Email" <?php if(isset($emailError) || (!isset($emailError) && !isset($passwordError) && !isset($invalidLogin) && !isset($phoneNumberError))): ?>autofocus<?php endif; ?> autocomplete="off" onfocus="this.value = this.value;">
         <?php if(isset($emptyEmail) && $emptyEmail): ?>
             <p class="text-danger register-error">Please enter your email</p>
         <?php elseif(isset($invalidEmail) && $invalidEmail): ?>
@@ -58,7 +58,7 @@
         <!-- END Email input -->
 
         <!-- BEGIN Password input -->
-        <input type="password" name="password" class="register-input<?php if(isset($passwordError) || isset($invalidLogin)): ?>-error<?php endif; ?>" placeholder="Password" <?php if(isset($passwordError) || isset($invalidLogin)): ?>autofocus<?php endif; ?> autocomplete="off">
+        <input type="password" name="password" class="register-input<?php if(isset($passwordError) || isset($invalidLogin)): ?>-error<?php endif; ?>" placeholder="Password" <?php if(isset($passwordError) || isset($invalidLogin)): ?>autofocus<?php endif; ?> autocomplete="off" <?php if(isset($_POST['password'])): ?>value="<?php echo $_POST['password']; ?><?php endif; ?>">
         <?php if(isset($emptyPassword) && $emptyPassword): ?>
             <p class="text-danger register-error">Please enter your password</p>
         <?php elseif(isset($tooShortPassword) && $tooShortPassword): ?>
@@ -82,10 +82,13 @@
                 <div class="country">
                     <img class="country-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
                     <div class="prefix">+40</div>
-                    <input type="hidden" value="40">
+                    <input type="text" name="phone-number-prefix" class="prefix-input" value="40">
                 </div>
             </div>
-            <input type="text" name="phone-number" class="phone-number-inp" placeholder="Phone number">
+            <input type="text" name="phone-number" class="phone-number-inp<?php if(isset($phoneNumberError)): ?>-error<?php endif; ?>" <?php if(isset($_POST['phone-number'])): ?>value="<?php echo $_POST['phone-number']; ?>"<?php endif; ?> placeholder="Phone number" <?php if(isset($phoneNumberError)): ?>autofocus<?php endif; ?>>
+            <?php if(isset($emptyPhoneNumber)): ?>
+                <p class="text-danger register-error phone-number-error">Please enter your phone number</p>
+            <?php endif; ?>
             <div class="why-phone-number-is-required">
                 <a href="#">Why my phone number is needed?</a>
             </div>

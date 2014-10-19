@@ -8,10 +8,11 @@ $(document).ready(function() {
         var countryFlag = $(this).children().attr('src');
         $('.prefix').html('+' + countryPrefix);
         $('.country-icon').attr('src', countryFlag);
+        $('.prefix-input').val(countryPrefix);
         $('.countries-popup').hide();
     });
 
     $('.register-button').click(function() {
-        alert('1');
+        //
     });
 });

@@ -80,8 +80,8 @@
         <div class="phone-number">
             <div class="choose-country">
                 <div class="country">
-                    <img class="country-icon" src="<?php echo URL::to('icons/countries/Romania.png'); ?>">
-                    <div class="prefix"><?php if(isset($defaultPrefix)) echo $defaultPrefix; ?></div>
+                    <img class="country-icon" src="<?php echo URL::to('icons/countries/'.$defaultPrefix->Name.'.png'); ?>">
+                    <div class="prefix"><?php if(isset($defaultPrefix)) echo '+'.$defaultPrefix->Prefix; ?></div>
                     <input type="text" name="phone-number-prefix" class="prefix-input" value="40">
                 </div>
             </div>

@@ -15,5 +15,5 @@ return array(
     'smsVerificationCodeLength' => 4,
     'maxSmsVerificationCodeAttempts' => 5,
     'smsVerificationCodePeriod' => 3600,
-    'registerDefaultCountry' => 'Romania'
+    'registerDefaultCountry' => 'Argentina'
 );

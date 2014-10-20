@@ -264,6 +264,19 @@ body {
     padding-bottom: 3px;
     border-radius: 3px;
     margin-right: 5px;
+    border: 2px solid #ecf2f4;
+}
+
+#register-page .choose-country-error {
+    display: inline-block;
+    width: 94px;
+    text-align: center;
+    background-color: #ECF2F4;
+    padding-left: 7px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    margin-right: 5px;
     border: 2px solid #e74c3c;
 }
 

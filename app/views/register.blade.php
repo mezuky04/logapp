@@ -78,11 +78,14 @@
 
         <!-- BEGIN Phone number input -->
         <div class="phone-number">
-            <div class="choose-country">
+            <div class="choose-country<?php if(!empty($phoneNumberError)): ?>-error<?php endif; ?>">
                 <div class="country">
-                    <img class="country-icon" src="<?php echo URL::to('icons/countries/'.$defaultPrefix->Name.'.png'); ?>">
-                    <div class="prefix"><?php if(isset($defaultPrefix)) echo '+'.$defaultPrefix->Prefix; ?></div>
-                    <input type="text" name="phone-number-prefix" class="prefix-input" value="40">
+                    <?php $url = 'icons/countries/'; if(isset($prefixCountry)): $url.=$prefixCountry.'.png'; ?>
+                    <?php else: $url.=$defaultPrefix->Name.'.png'; ?>
+                    <?php endif; ?>
+                    <img class="country-icon" src="<?php echo URL::to($url); ?>">
+                    <div class="prefix"><?php if (isset($_POST['phone-number-prefix'])) echo '+'.$_POST['phone-number-prefix']; elseif(isset($defaultPrefix)) echo '+'.$defaultPrefix->Prefix; ?></div>
+                    <input type="text" name="phone-number-prefix" class="prefix-input" value="<?php if(isset($_POST['phone-number-prefix'])) echo $_POST['phone-number-prefix']; else echo $defaultPrefix->Prefix; ?>">
                 </div>
             </div>
             <input type="text" name="phone-number" class="phone-number-inp<?php if(isset($phoneNumberError)): ?>-error<?php endif; ?>" <?php if(isset($_POST['phone-number'])): ?>value="<?php echo $_POST['phone-number']; ?>"<?php endif; ?> placeholder="Phone number" <?php if(isset($phoneNumberError)): ?>autofocus<?php endif; ?>>
@@ -111,9 +114,11 @@
 </div>
 <!-- END Register box -->
 
-<!-- BEGIN Forgot password -->
-<span class="register-selected-plan">Free</span> - <a href="<?php echo URL::to('plans'); ?>" class="forgot-password-link">Select another plan</a>
-<!-- END Forgot password -->
+<?php if(!empty($selectedPlan)): ?>
+<!-- BEGIN Selected plan -->
+<span class="register-selected-plan"><?php echo $selectedPlan; ?></span> - <a href="<?php echo URL::to('plans'); ?>" class="forgot-password-link">Select another plan</a>
+<!-- END Selected plan -->
+<?php endif; ?>
 
 </body>
 <!-- END body -->

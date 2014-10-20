@@ -76,6 +76,14 @@ class RegisterController extends BaseController {
      */
     public function processRegistration() {
 
+        // Get and validate subscription plan
+        $this->_selectedPlan = Input::get('subscription-plan');
+        $subscriptionDetailsModel = new SubscriptionDetailsModel();
+        $subscriptionPlanErrors = $subscriptionDetailsModel->validateSubscriptionPlan($this->_selectedPlan);
+        if (count($subscriptionPlanErrors)) {
+            return $this->_renderRegisterView($subscriptionPlanErrors);
+        }
+
         // Get and validate email
         $this->_formEmail = Input::get('email');
         $emailErrors = $this->_usersModel->validateEmail($this->_formEmail);
@@ -104,14 +112,6 @@ class RegisterController extends BaseController {
         $phoneNumberErrors = $phoneNumbersModel->validatePhoneNumber($this->_userPhoneNumber);
         if (count($phoneNumberErrors)) {
             return $this->_renderRegisterView($phoneNumberErrors);
-        }
-
-        // Get and validate subscription plan
-        $this->_selectedPlan = Input::get('subscription-plan');
-        $subscriptionDetailsModel = new SubscriptionDetailsModel();
-        $subscriptionPlanErrors = $subscriptionDetailsModel->validateSubscriptionPlan($this->_selectedPlan);
-        if (count($subscriptionPlanErrors)) {
-            return $this->_renderRegisterView($subscriptionPlanErrors);
         }
 
         try {
@@ -175,10 +175,31 @@ class RegisterController extends BaseController {
      * @param array $variables key => value pairs to make available in view
      */
     private function _renderRegisterView($variables = array()) {
+
         $variables['pageTitle'] = $this->_viewTitle;
         $variables['countries'] = $this->_getCountries();
+
+        // Check if a subscription plan is selected or exists in the url
+        $subscriptionDetailsModel = new SubscriptionDetailsModel();
+        if (!empty($this->_selectedPlan)) {
+            $variables['selectedPlan'] = $subscriptionDetailsModel->getNameByKey($this->_selectedPlan);
+        } else {
+            $selectedPlan = Input::get('selected-plan');
+            $subscriptionPlanErrors = $subscriptionDetailsModel->validateSubscriptionPlan($selectedPlan);
+            if (!count($subscriptionPlanErrors)) {
+                $variables['selectedPlan'] = $subscriptionDetailsModel->getNameByKey($selectedPlan);
+            }
+        }
+
+        // Get default country and prefix
         $prefixesModel = new PrefixesModel();
         $variables['defaultPrefix'] = $prefixesModel->getDefaultPrefixAndCountry();
+
+        if (isset($this->_userPhoneNumberPrefix) && $this->_userPhoneNumberPrefix) {
+            $countriesModel = new CountriesModel();
+            $variables['prefixCountry'] = $countriesModel->getByPrefix($this->_userPhoneNumberPrefix);
+        }
+
         return View::make($this->_registerView, $variables);
     }
 }

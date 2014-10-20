@@ -22,6 +22,7 @@ class SubscriptionDetailsModel extends BaseModel {
      */
     protected $_subscriptionPlanFeaturesTable = 'SubscriptionPlanFeatures';
 
+
     /**
      * Get all subscription plans
      *
@@ -38,6 +39,12 @@ class SubscriptionDetailsModel extends BaseModel {
             $subscriptionPlan->Items = $subscriptionPlansFeaturesModel->getSubscriptionPlanFeatures($subscriptionPlan->SubscriptionDetailId);
         }
         return (array) $subscriptionPlans;
+    }
+
+
+    public function getNameByKey($key) {
+        $result = $this->getOne(array('Name'), array('Key' => $key));
+        return $result->Name;
     }
 
 

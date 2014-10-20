@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.choose-country').click(function() {
+    $('.choose-country, .choose-country-error').click(function() {
         $('.countries-popup').show();
     });
 
@@ -10,9 +10,5 @@ $(document).ready(function() {
         $('.country-icon').attr('src', countryFlag);
         $('.prefix-input').val(countryPrefix);
         $('.countries-popup').hide();
-    });
-
-    $('.register-button').click(function() {
-        //
     });
 });

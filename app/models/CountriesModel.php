@@ -22,6 +22,7 @@ class CountriesModel extends BaseModel {
      */
     private $_prefixesTable = 'Prefixes';
 
+
     public function get() {
         // Build sql
         $sql = "SELECT {$this->_tableName}.Name, {$this->_prefixesTable}.Prefix ";
@@ -30,5 +31,19 @@ class CountriesModel extends BaseModel {
         $sql .= "ON {$this->_tableName}.CountryId = {$this->_prefixesTable}.CountryId";
 
         return DB::select($sql);
+    }
+
+    public function getByPrefix($prefix) {
+        // Build sql
+        $sql = "SELECT {$this->_tableName}.Name ";
+        $sql .= "FROM {$this->_tableName} ";
+        $sql .= "JOIN {$this->_prefixesTable} ";
+//        $sql .= "ON {$this->_prefixesTable}.Prefix = ? ";
+        $sql .= "ON ({$this->_tableName}.CountryId = {$this->_prefixesTable}.CountryId ";
+        $sql .= "AND {$this->_prefixesTable}.Prefix = ?) ";
+        $sql .= "LIMIT 0,1";
+
+        $result = DB::select($sql, array($prefix));
+        return $result[0]->Name;
     }
 }

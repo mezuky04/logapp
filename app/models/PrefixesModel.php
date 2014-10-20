@@ -39,12 +39,19 @@ class PrefixesModel extends BaseModel {
 
         $result = DB::select($sql, array(Config::get($this->_accountConfig.'registerDefaultCountry')));
         return $result[0];
-//        $formattedResult = (object) array(
-//            'DefaultPrefix' => $result[0]->Prefix,
-//            'DefaultPrefixCountry' => $result[0]->Name
-//        );
-//
-//        return $formattedResult;
+    }
+
+    public function getPrefix($country) {
+        // Build sql
+        $sql = "SELECT {$this->_tableName}.Prefix ";
+        $sql .= "FROM {$this->_tableName} ";
+        $sql .= "JOIN {$this->_countriesTable} ";
+        $sql .= "ON {$this->_tableName}.CountryId = {$this->_countriesTable}.CountryId ";
+        $sql .= "WHERE {$this->_countriesTable}.Name = ? ";
+        $sql .= "LIMIT 0,1";
+
+        $result = DB::select($sql, array($country));
+        return $result[0]->Prefix;
     }
 
     /**

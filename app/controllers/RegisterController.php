@@ -135,8 +135,13 @@ class RegisterController extends BaseController {
      * @return array
      */
     private function _getCountries() {
-        $countriesModel = new CountriesModel();
-        return $countriesModel->get();
+        if (!Cache::has('countries')) {
+            $countriesModel = new CountriesModel();
+            $countries = $countriesModel->get();
+            Cache::forever('countries', $countries);
+            return $countries;
+        }
+        return Cache::get('countries');
     }
 
 

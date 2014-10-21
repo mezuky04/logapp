@@ -72,6 +72,7 @@ class PrefixesModel extends BaseModel {
         return $result[0]->Prefix;
     }
 
+
     /**
      * Get PrefixId of the given $prefix
      *

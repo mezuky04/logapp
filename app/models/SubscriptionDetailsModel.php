@@ -42,8 +42,17 @@ class SubscriptionDetailsModel extends BaseModel {
     }
 
 
+    /**
+     * Get the name of subscription plan that match the given $key
+     *
+     * @param string $key
+     * @return bool|string
+     */
     public function getNameByKey($key) {
         $result = $this->getOne(array('Name'), array('Key' => $key));
+        if (!$result) {
+            return false;
+        }
         return $result->Name;
     }
 

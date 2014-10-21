@@ -116,14 +116,16 @@ class RegisterController extends BaseController {
 
         try {
             // Insert new user in database
-            $this->_usersModel->createNewUser(array(
+            $user = array(
                 'email' => $this->_formEmail,
                 'password' => $this->_userPassword,
                 'phoneNumber' => $this->_userPhoneNumber,
                 'phoneNumberPrefix' => $this->_userPhoneNumberPrefix,
                 'subscriptionPlan' => $this->_selectedPlan
-            ));
+            );
+            $this->_usersModel->createNewUser($user);
 
+            Event::fire('user.register', $user);
             return Redirect::to('welcome');
         } catch (Exception $e) {
             exit($e->getMessage());

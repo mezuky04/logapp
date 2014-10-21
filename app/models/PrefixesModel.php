@@ -28,6 +28,11 @@ class PrefixesModel extends BaseModel {
     private $_countriesTable = 'Countries';
 
 
+    /**
+     * Get default country and prefix
+     *
+     * @return bool|object
+     */
     public function getDefaultPrefixAndCountry() {
         // Build sql
         $sql = "SELECT {$this->_tableName}.Prefix, {$this->_countriesTable}.Name ";
@@ -38,9 +43,19 @@ class PrefixesModel extends BaseModel {
         $sql .= "LIMIT 0,1";
 
         $result = DB::select($sql, array(Config::get($this->_accountConfig.'registerDefaultCountry')));
+        if (!$result) {
+            return false;
+        }
         return $result[0];
     }
 
+
+    /**
+     * Get prefix that belongs to the given country
+     *
+     * @param string $country
+     * @return bool|string
+     */
     public function getPrefix($country) {
         // Build sql
         $sql = "SELECT {$this->_tableName}.Prefix ";
@@ -51,6 +66,9 @@ class PrefixesModel extends BaseModel {
         $sql .= "LIMIT 0,1";
 
         $result = DB::select($sql, array($country));
+        if (!$result) {
+            return false;
+        }
         return $result[0]->Prefix;
     }
 

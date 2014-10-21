@@ -86,7 +86,7 @@
     <file path="/base-login.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412498486974" ignored="false" />
     <file path="/errors.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412770000409" ignored="false" />
     <file path="/global.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412614884179" ignored="false" />
-    <file path="/PrefixesModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413829390648" ignored="false" />
+    <file path="/PrefixesModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413865500498" ignored="false" />
     <file path="/PlansController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413175890803" ignored="false" />
     <file path="/SubscriptionPlanFeatures.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412915154934" ignored="false" />
     <file path="/SubscriptionPlanFeaturesModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1412915029251" ignored="false" />
@@ -132,15 +132,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubscriptionDetailsModel.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/SubscriptionDetailsModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="26" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.5974359">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RegisterController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -150,10 +141,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrefixesModel.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PrefixesModel.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/PrefixesModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="41" selection-start="1163" selection-end="1163" vertical-scroll-proportion="-20.192308">
+            <state line="56" column="26" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.43333334">
               <folding />
             </state>
           </provider>
@@ -199,9 +190,9 @@
         <option value="$PROJECT_DIR$/public/style.css" />
         <option value="$PROJECT_DIR$/app/views/register.blade.php" />
         <option value="$PROJECT_DIR$/public/javascript/register.js" />
-        <option value="$PROJECT_DIR$/app/models/PrefixesModel.php" />
         <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
         <option value="$PROJECT_DIR$/app/models/SubscriptionDetailsModel.php" />
+        <option value="$PROJECT_DIR$/app/models/PrefixesModel.php" />
       </list>
     </option>
   </component>
@@ -435,7 +426,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -603,16 +594,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/PrefixesModel.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="41" selection-start="1163" selection-end="1163" vertical-scroll-proportion="-20.192308">
+        <state line="184" column="102" selection-start="5519" selection-end="5519" vertical-scroll-proportion="-15.615385">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
+    <entry file="file://$PROJECT_DIR$/app/models/SubscriptionDetailsModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="102" selection-start="5519" selection-end="5519" vertical-scroll-proportion="-15.615385">
+        <state line="48" column="26" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.5974359">
           <folding />
         </state>
       </provider>
@@ -624,9 +615,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/SubscriptionDetailsModel.php">
+    <entry file="file://$PROJECT_DIR$/app/models/PrefixesModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="26" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.5974359">
+        <state line="56" column="26" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.43333334">
           <folding />
         </state>
       </provider>

@@ -143,3 +143,14 @@ Route::filter('isVerificationCodeRequired', function() {
  * Routes for loggedAPI
  */
 Route::post('loggerAPI/log', 'APIController@log');
+
+// Tests for BaseModel
+//Route::group(array('prefix' => 'basemodel-tests'), function() {
+//    Route::get('getOne', 'TestController@getOne');
+//    Route::get('getAll', 'TestController@getAll');
+//    Route::get('insert', 'TestController@insert');
+//    Route::get('insertGetId', 'TestController@insertGetId');
+//    Route::get('update', 'TestController@update');
+//    Route::get('delete', 'TestController@delete');
+//    Route::get('truncate', 'TestController@truncate');
+//});

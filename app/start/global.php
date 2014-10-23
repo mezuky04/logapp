@@ -78,15 +78,5 @@ App::down(function()
 |
 */
 
+//require app_path().'/errors.php';
 require app_path().'/filters.php';
-
-/*
-|--------------------------------------------------------------------------
-| Listeners
-|--------------------------------------------------------------------------
-|
-| Application listeners
-|
-*/
-
-require app_path().'/listeners.php';

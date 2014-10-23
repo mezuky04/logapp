@@ -335,9 +335,9 @@ class UsersModel extends BaseModel {
             throw new Exception("Could not insert phone number in database");
             DB::rollback();
         }
-//
-//        $this->_sendRegisterEmail();
-//        $this->_sendRegisterSmsCode();
+
+        $this->_sendRegisterEmail();
+        $this->_sendRegisterSmsCode();
     }
 
 

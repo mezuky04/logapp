@@ -54,7 +54,7 @@ class MailHelper {
 
         // Check for all required fields
         foreach ($details as $detail) {
-           if (!in_array($detail, $requiredDetails)) {
+           if (!in_array($detail, $details)) {
                throw new Exception("'{{$detail}}' field is required");
            }
         }
@@ -70,26 +70,5 @@ class MailHelper {
             $message->from($this->_fromEmail, $this->_fromName);
             $message->to($this->_to)->subject($this->_subject);
         });
-    }
-
-
-    /**
-     * Send account confirmation email
-     *
-     * @param string $userEmail
-     * @param string $subscriptionPlan
-     * @throws Exception
-     */
-    public function sendConfirmationEmail($userEmail, $subscriptionPlan) {
-        // Validate parameters
-        if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
-            throw new Exception("Confirmation email was not sent because given email is invalid");
-        }
-        $subscriptionDetailsModel = new SubscriptionDetailsModel();
-        if (!$subscriptionDetailsModel->isSubscriptionPlan($subscriptionPlan)) {
-            throw new Exception("Confirmation email was not sent because given subscription plan is invalid");
-        }
-
-        // All ok, try to send confirmation email
     }
 }

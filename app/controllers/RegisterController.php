@@ -12,6 +12,8 @@ class RegisterController extends BaseController {
      */
     protected $_viewTitle = 'Create new account';
 
+    protected $_viewName = 'register';
+
     /**
      * @var string User selected plan
      */
@@ -67,7 +69,8 @@ class RegisterController extends BaseController {
         }
 
         // Render register view with all needed information
-        return $this->_renderRegisterView();
+        return $this->renderView();
+//        return $this->_renderRegisterView();
     }
 
 
@@ -209,5 +212,10 @@ class RegisterController extends BaseController {
         }
 
         return View::make($this->_registerView, $variables);
+    }
+
+    protected function renderView($viewData = array()) {
+        $var = parent::renderView($viewData);
+        exit(print_r($var));
     }
 }

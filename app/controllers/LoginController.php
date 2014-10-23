@@ -9,6 +9,9 @@
  */
 class LoginController extends BaseController {
 
+    protected $_viewName = 'login';
+    protected $_viewTitle = 'Login';
+
     /**
      * @var string Login view name
      */
@@ -51,7 +54,8 @@ class LoginController extends BaseController {
         }
 
         // Render view
-        return View::make($this->_loginView);
+//        return View::make($this->_loginView);
+        return $this->renderView();
     }
 
 

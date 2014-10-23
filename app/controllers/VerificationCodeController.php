@@ -61,7 +61,6 @@ class VerificationCodeController extends BaseController {
         }
 
         // Render view
-//        return $this->_renderVerificationCodeView();
         return $this->renderView();
     }
 
@@ -179,19 +178,6 @@ class VerificationCodeController extends BaseController {
             return true;
         }
         return false;
-    }
-
-
-    /**
-     * Render verification code view with the given variables
-     *
-     * @param array $variables
-     * @return mixed
-     */
-    private function _renderVerificationCodeView($variables = array()) {
-        $variables['pageTitle'] = $this->_pageTitle;
-        $variables['bodyId'] = $this->_bodyId;
-        return View::make($this->_verificationView, $variables);
     }
 
 

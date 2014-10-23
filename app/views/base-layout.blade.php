@@ -5,6 +5,7 @@
     <script src="<?php echo URL::to('jquery-min.js'); ?>"></script>
     <script src="<?php echo URL::to('script.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo URL::to('bootstrap.min.css'); ?>">
+    <title><?php if(isset($pageTitle)) echo $pageTitle; ?></title>
 </head>
 <body<?php if(!empty($bodyId)): ?> id="<?php echo $bodyId; ?>"<?php endif; ?>>
 <div class="mask">

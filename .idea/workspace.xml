@@ -139,7 +139,7 @@
       <file leaf-file-name="VerificationCodeController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/VerificationCodeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="275" selection-end="275" vertical-scroll-proportion="-1.176923">
+            <state line="62" column="22" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.5641026">
               <folding />
             </state>
           </provider>
@@ -203,9 +203,9 @@
         <option value="$PROJECT_DIR$/public/script.js" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/app/controllers/VerificationCodeController.php" />
         <option value="$PROJECT_DIR$/app/views/base-layout.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/VerificationCodeController.php" />
       </list>
     </option>
   </component>
@@ -704,7 +704,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/VerificationCodeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="275" selection-end="275" vertical-scroll-proportion="-1.176923">
+        <state line="62" column="22" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.5641026">
           <folding />
         </state>
       </provider>

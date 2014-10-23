@@ -45,6 +45,21 @@ class BaseController extends Controller {
     protected $_viewTitle = '';
 
     /**
+     * @var string View name
+     */
+    protected $_viewName = '';
+
+    /**
+     * @var bool
+     */
+    protected $_isViewRequired = true;
+
+    /**
+     * @var string Page body id
+     */
+    protected $_bodyId = '';
+
+    /**
      * @var string Default view title
      */
     private $_defaultViewTitle = 'LogApp';
@@ -74,7 +89,7 @@ class BaseController extends Controller {
         // Make data available to all views
         $this->_makeAvailableInAllViews();
 
-        $this->_processViewTitle();
+//        $this->_processViewTitle();
 
         // Call before filter
         $this->beforeFilter(function() {
@@ -97,19 +112,36 @@ class BaseController extends Controller {
 	}
 
 
-    /**
-     * render the given view
-     *
-     * @param string $viewName
-     * @param array $viewData To make available in view
-     */
-    protected function renderView($viewName, $viewData = array()) {
-        if (!count($viewData)) {
-            exit(View::make($viewName));
-        }
-        exit(View::make($viewName, $viewData));
-    }
+//    /**
+//     * render the given view
+//     *
+//     * @param string $viewName
+//     * @param array $viewData To make available in view
+//     */
+//    protected function renderView($viewName, $viewData = array()) {
+//        if (!count($viewData)) {
+//            exit(View::make($viewName));
+//        }
+//        exit(View::make($viewName, $viewData));
+//    }
 
+    protected function renderView($viewData = array()) {
+        // Check if a view is required and if has a title set
+        if (empty($this->_viewName) && $this->_isViewRequired) {
+            throw new Exception("Missing view file name");
+        }
+        if (empty($this->_viewTitle) && $this->_isViewRequired) {
+            throw new Exception("Missing view title");
+        }
+
+        // Make the given variables available in view
+        $viewData['pageTitle'] = $this->_viewTitle . $this->_appendToViewTitle;
+        if (!empty($this->_bodyId)) {
+            $viewData['bodyId'] = $this->_bodyId;
+        }
+
+        return View::make($this->_viewName, $viewData);
+    }
 
 
     /**

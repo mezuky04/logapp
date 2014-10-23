@@ -5,22 +5,22 @@
  *
  * @author Alexandru Bugarin <alexandru.bugarin@gmail.com>
  */
-class VerificationCodeController extends BaseCOntroller {
+class VerificationCodeController extends BaseController {
 
     /**
      * @var string Page title
      */
-    private $_pageTitle = "Two factor authentication";
-
-    /**
-     * @var string Page body id
-     */
-    private $_bodyId = "verification-code-page";
+    protected $_viewTitle = "Two factor authentication";
 
     /**
      * @var string Verification view name
      */
-    private $_verificationView = 'verification';
+    protected $_viewName = 'verification';
+
+    /**
+     * @var string Page body id
+     */
+    protected $_bodyId = "verification-code-page";
 
     /**
      * @var string Verification code entered by the user
@@ -61,7 +61,8 @@ class VerificationCodeController extends BaseCOntroller {
         }
 
         // Render view
-        return $this->_renderVerificationCodeView();
+//        return $this->_renderVerificationCodeView();
+        return $this->renderView();
     }
 
 

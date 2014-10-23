@@ -7,6 +7,9 @@
  */
 class HomeController extends BaseController {
 
+    protected $_viewName = 'home';
+    protected $_bodyId = 'homepage';
+
     /**
      * @var string Home page layout name
      */
@@ -25,6 +28,24 @@ class HomeController extends BaseController {
         'file' => 100
     );
 
+    public function index() {
+        if (!$this->_loggedIn) {
+            return $this->renderView();
+        }
+        return $this->renderView();
+    }
+
+    private function _showLoggedInHomepage() {
+        //
+    }
+
+    private function _showNotLoggedInHomepage() {
+        //
+    }
+
+//    protected function renderView() {
+//        //
+//    }
 
     /**
      * Render homepage

@@ -13,12 +13,5 @@ class UserHandler {
         $mailHelper->sendConfirmationEmail($user['email'], $user['subscriptionPlan']);
 
         // Send sms confirmation code
-        $smsHelper = new SmsHelper();
-        $phoneNumber = $user['phoneNumber'].$user['phoneNumberPrefix'];
-        $smsHelper->sendRegisterSmsVerificationCode($phoneNumber);
-    }
-
-    public function onLogin($user) {
-        //
     }
 }

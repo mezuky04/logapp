@@ -139,7 +139,7 @@ body {
     margin-bottom: 10px;
 }
 
-#login-page .login-button, #login-page .login-button-disabled, #register-page .register-button {
+#login-page .login-button, #register-page .register-button {
     display: block;
     width: 254px;
     height: 40px;
@@ -151,11 +151,6 @@ body {
     outline: none;
     font-size: 20px;
     transition: 300ms
-}
-
-#login-page .login-button-disabled {
-    background-color: #89C4F4;
-    cursor: default;
 }
 
 #login-page .login-button:hover, #register-page .register-button:hover {
@@ -562,47 +557,6 @@ body {
   ==================
     END Plans page
   ==================
-*/
-
-
-/*
-  ================================
-    BEGIN Verification code page
-  ================================
-*/
-#verification-code-page .verification-panel {
-    width: 750px;
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: center;
-}
-
-#verification-code-page .verification-panel p {
-    text-align: left;
-}
-
-#verification-code-page .verification-code-form {
-    text-align: left;
-}
-
-#verification-code-page .verification-code-input {
-    display: inline-block;
-    width: 300px;
-}
-
-#verification-code-page .verification-code-button {
-    display: inline-block;
-    vertical-align: top;
-    outline: none;
-}
-
-#verification-code-page .verification-code-error {
-    display: none;
-}
-/*
-  ==============================
-    END Verification code page
-  ==============================
 */
 
 /** Homepage */

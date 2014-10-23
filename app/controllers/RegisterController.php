@@ -129,7 +129,6 @@ class RegisterController extends BaseController {
             $this->_usersModel->createNewUser($user);
 
             Event::fire('user.register', $user);
-
             return Redirect::to('welcome');
         } catch (Exception $e) {
             exit($e->getMessage());

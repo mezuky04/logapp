@@ -6,7 +6,6 @@
     <title>Login - LogApp.co</title>
     <link rel="stylesheet" href="<?php echo URL::to('style.css'); ?>">
     <script src="<?php echo URL::to('jquery-min.js'); ?>"></script>
-    <script src="<?php echo URL::to('script.js'); ?>"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css" rel="stylesheet">
 </head>
 <!-- END head -->
@@ -28,7 +27,7 @@
         </div>
 
         <!-- BEGIN Login form -->
-        <form name="login" class="login-form" method="post" action="">
+        <form name="login" method="post" action="">
 
             <!-- BEGIN Email input -->
             <input type="text" name="email" class="login-input<?php if(isset($emailError)): ?>-error<?php endif; ?>" <?php if(isset($_POST['email'])): ?>value="<?php echo $_POST['email']; ?>"<?php endif; ?> placeholder="Email" <?php if(isset($emailError) || (!isset($emailError) && !isset($passwordError) && !isset($invalidLogin))): ?>autofocus<?php endif; ?> autocomplete="off">

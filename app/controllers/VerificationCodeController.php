@@ -8,6 +8,16 @@
 class VerificationCodeController extends BaseCOntroller {
 
     /**
+     * @var string Page title
+     */
+    private $_pageTitle = "Two factor authentication";
+
+    /**
+     * @var string Page body id
+     */
+    private $_bodyId = "verification-code-page";
+
+    /**
      * @var string Verification view name
      */
     private $_verificationView = 'verification';
@@ -51,7 +61,7 @@ class VerificationCodeController extends BaseCOntroller {
         }
 
         // Render view
-        return View::make($this->_verificationView);
+        return $this->_renderVerificationCodeView();
     }
 
 
@@ -168,6 +178,19 @@ class VerificationCodeController extends BaseCOntroller {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * Render verification code view with the given variables
+     *
+     * @param array $variables
+     * @return mixed
+     */
+    private function _renderVerificationCodeView($variables = array()) {
+        $variables['pageTitle'] = $this->_pageTitle;
+        $variables['bodyId'] = $this->_bodyId;
+        return View::make($this->_verificationView, $variables);
     }
 
 

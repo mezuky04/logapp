@@ -6,7 +6,7 @@
     <script src="<?php echo URL::to('script.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo URL::to('bootstrap.min.css'); ?>">
 </head>
-<body>
+<body<?php if(!empty($bodyId)): ?> id="<?php echo $bodyId; ?>"<?php endif; ?>>
 <div class="mask">
     <div class="load">
         <div class="loader"></div>

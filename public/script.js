@@ -7,6 +7,7 @@ $(document).ready(function() {
     submitAccountSetting();
     switchListener();
     submitVerificationCode();
+    changeLoginButtonText();
 });
 
 /**
@@ -89,8 +90,21 @@ function submitVerificationCode() {
         $.post(requestUrl, form, function(response) {
 
             var data = jQuery.parseJSON(response);
+            if (data.status == 'fail') {
+                // An error occurred, display a message
+                var newClass = 'verification-code-input has-error';
+                $('#verification-code').attr('class', newClass);
+                $('#verification-code-error').html(data.message).show();
+            } else if (data.status == 'success') {
+                // All ok, hide errors
+                var newClass = 'verification-code-input has-success';
+                $('#verification-code').attr('class', newClass);
+                $('#verification-code-error').html('').hide();
+                var redirectUrl = $('.verification-code-form').attr('redirect-url');
+                window.location.replace(redirectUrl);
+                return;
+            }
             hideMask();
-            alert(data.message);
         });
         return false;
     });
@@ -322,5 +336,22 @@ function doTwoFactorAuthChangeRequest() {
         if (serverResponse.status === 'success') {
             alert('Two factor auth status was updated');
         }
+    });
+}
+
+function changeLoginButtonText() {
+    $('.login-form').submit(function() {
+        $('.login-button').attr('value', 'Working...');
+        var newButtonClass = $('.login-button').attr('class') + '-disabled';
+        $('.login-button').attr('class', newButtonClass).attr('disabled', true);
+    });
+    $('.login-button-disabled').click(function() {
+        //
+    })
+}
+
+function checkFieldValue() {
+    $('.login-input-error').focus(function() {
+        //
     });
 }

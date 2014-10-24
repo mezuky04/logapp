@@ -8,21 +8,19 @@
 class PlansController extends BaseController {
 
     /**
+     * @var string View file name
+     */
+    protected $_viewName = 'plans';
+
+    /**
      * @var string Page title
      */
     protected $_viewTitle = 'Subscription plans';
 
     /**
-     * @var string Plans view name
-     */
-    private $_plansView = 'plans';
-
-    /**
      * @var null SubscriptionDetailsModel instance
      */
     private $_subscriptionDetailsModel = null;
-
-    private $_plans = array();
 
     /**
      * Create SubscriptionDetailsModel instance
@@ -36,8 +34,15 @@ class PlansController extends BaseController {
      * Render plans view
      */
     public function index() {
-        $this->_getPlans();
-        $this->renderView($this->_plansView, array('plans' => $this->_plans, 'pageTitle' => $this->_viewTitle));
+        return $this->renderView($this->_getViewData());
+    }
+
+
+    /**
+     * @return array
+     */
+    private function _getViewData() {
+        return array('plans' => $this->_getPlans());
     }
 
 
@@ -45,6 +50,6 @@ class PlansController extends BaseController {
      * Get subscription plans from database
      */
     private function _getPlans() {
-        $this->_plans = $this->_subscriptionDetailsModel->getSubscriptionPlans();
+        return $this->_subscriptionDetailsModel->getSubscriptionPlans();
     }
 }

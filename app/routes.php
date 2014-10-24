@@ -2,8 +2,8 @@
 /**
  * Routes for homepage
  */
-Route::get('', 'HomeController@showHomepage');
-Route::get('home', 'HomeController@showHomepage');
+Route::get('', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
 
 /**

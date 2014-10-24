@@ -8,24 +8,19 @@
 class HomeController extends BaseController {
 
     /**
-     * @var string Home view name
+     * @var string View file name
      */
     protected $_viewName = 'home';
 
     /**
-     * @var string Home view title
+     * @var string View title
      */
     protected $_viewTitle = 'Home';
 
     /**
-     * @var string Home view body id
+     * @var string View body id
      */
     protected $_bodyId = 'homepage';
-
-//    /**
-//     * @var string Home page layout name
-//     */
-//    private $_homeLayout = 'home';
 
     /**
      * @var int The number of last logs to display on homepage
@@ -40,44 +35,40 @@ class HomeController extends BaseController {
         'file' => 100
     );
 
+
+    /**
+     * Render homepage
+     *
+     * @return mixed
+     */
     public function index() {
         if (!$this->_loggedIn) {
             return $this->renderView();
         }
-        return $this->renderView();
+
+        Event::fire('page.accessed', $this->_userId);
+        return $this->renderView($this->_getViewData());
     }
 
 
-//    /**
-//     * Render homepage
-//     *
-//     * @return mixed
-//     */
-//    public function showHomepage() {
-//
-//        // Get user las logs
-//        $logsModel = new LogsModel();
-//        $logs = $logsModel->getLastLogs($this->_numberOfLastLogsToDisplay, $this->_userId);
-//
-//        $view = View::make($this->_homeLayout);
-//
-//        if (!$logs) {
-//            return $view->with('noLogs', true);
-//        }
-//
-//        // Log user action
-//        try {
-//            $userActionLogsModel = new UserActionLogsModel();
-//            $userActionLogsModel->logAction("Accessed homepage", $this->_userId, 2);
-//        } catch (Exception $e) {
-//            // todo an exception handler
-//            exit($e->getMessage());
-//        }
-//
-//
-//        $view->with('lastLogs', $logs);
-//        $view->with('numberOfLogs', count($logs));
-//        return $view->with('maxLengths', $this->_maxLengths);
-//    }
+    /**
+     * Get required data for home view
+     *
+     * @return array
+     */
+    private function _getViewData() {
+        $viewData = array();
 
+        // Get user last logs
+        $logsModel = new LogsModel();
+        $logs = $logsModel->getLastLogs($this->_numberOfLastLogsToDisplay, $this->_userId);
+        if (!$logs) {
+            return array('noLogs' => true);
+        }
+
+        $viewData['lastLogs'] = $logs;
+        $viewData['numberOfLogs'] = count($logs);
+        $viewData['maxLengths'] = $this->_maxLengths;
+        return $viewData;
+    }
 }

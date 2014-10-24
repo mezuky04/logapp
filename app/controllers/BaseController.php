@@ -8,7 +8,8 @@
  * @author Alexandru Bugarin <alexandru.bugarin@gmail.com>
  */
 class BaseController extends Controller {
-
+    protected $_viewName = '';
+    protected $_bodyId = '';
     /**
      * @var int User id
      */
@@ -74,7 +75,7 @@ class BaseController extends Controller {
         // Make data available to all views
         $this->_makeAvailableInAllViews();
 
-        $this->_processViewTitle();
+//        $this->_processViewTitle();
 
         // Call before filter
         $this->beforeFilter(function() {
@@ -98,18 +99,30 @@ class BaseController extends Controller {
 
 
     /**
-     * render the given view
-     *
-     * @param string $viewName
-     * @param array $viewData To make available in view
+     * @param array $viewData To parse at the view
+     * @return mixed
+     * @throws Exception
      */
-    protected function renderView($viewName, $viewData = array()) {
-        if (!count($viewData)) {
-            exit(View::make($viewName));
-        }
-        exit(View::make($viewName, $viewData));
-    }
+    protected function renderView($viewData = array()) {
 
+        // If a view file is not given
+        if (empty($this->_viewName)) {
+            throw new Exception("No view name given");
+        }
+
+        // Append view title and body id
+        if (!empty($this->_viewTitle)) {
+            $viewData['pageTitle'] = $this->_viewTitle.$this->_appendToViewTitle;
+        } elseif (!empty($this->_defaultViewTitle)) {
+            $viewData['pageTitle'] = $this->_defaultViewTitle;
+        }
+        if (!empty($this->_bodyId)) {
+            $viewData['bodyId'] = $this->_bodyId;
+        }
+
+        // Render view
+        return View::make($this->_viewName, $viewData);
+    }
 
 
     /**

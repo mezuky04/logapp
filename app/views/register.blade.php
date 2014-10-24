@@ -46,7 +46,7 @@
     </div>
 
     <!-- BEGIN Register form -->
-    <form name="register" method="post" action="">
+    <form name="register" class="register-form" method="post" action="">
 
         <!-- BEGIN Email input -->
         <input type="text" name="email" class="register-input<?php if(isset($emailError)): ?>-error<?php endif; ?>" <?php if(isset($_POST['email'])): ?>value="<?php echo $_POST['email']; ?>"<?php endif; ?> placeholder="Email" <?php if(isset($emailError) || (!isset($emailError) && !isset($passwordError) && !isset($invalidLogin) && !isset($phoneNumberError))): ?>autofocus<?php endif; ?> autocomplete="off" onfocus="this.value = this.value;">
@@ -80,9 +80,18 @@
         <div class="phone-number">
             <div class="choose-country<?php if(!empty($phoneNumberError)): ?>-error<?php endif; ?>">
                 <div class="country">
-                    <?php $url = 'icons/countries/'; if(isset($prefixCountry)): $url.=$prefixCountry.'.png'; ?>
-                    <?php else: $url.=$defaultPrefix->Name.'.png'; ?>
-                    <?php endif; ?>
+                    <?php
+                        $url = 'icons/countries/';
+                        if(isset($prefixCountry)):
+                            $url.=$prefixCountry.'.png';
+                    ?>
+                    <?php
+                        else:
+                            $url.=$defaultPrefix->Name.'.png';
+                    ?>
+                    <?php
+                        endif;
+                    ?>
                     <img class="country-icon" src="<?php echo URL::to($url); ?>">
                     <div class="prefix"><?php if (isset($_POST['phone-number-prefix'])) echo '+'.$_POST['phone-number-prefix']; elseif(isset($defaultPrefix)) echo '+'.$defaultPrefix->Prefix; ?></div>
                     <input type="text" name="phone-number-prefix" class="prefix-input" value="<?php if(isset($_POST['phone-number-prefix'])) echo $_POST['phone-number-prefix']; else echo $defaultPrefix->Prefix; ?>">

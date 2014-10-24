@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?php echo URL::to('bootstrap.min.css'); ?>">
     <title><?php if(isset($pageTitle)) echo $pageTitle; ?></title>
 </head>
-<body>
+<body<?php if(isset($bodyId)): ?> id="<?php echo $bodyId; ?>"<?php endif; ?>>
 <div class="mask">
     <div class="load">
         <div class="loader"></div>

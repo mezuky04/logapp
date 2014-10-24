@@ -12,17 +12,15 @@ class RegisterController extends BaseController {
      */
     protected $_viewTitle = 'Create new account';
 
+    /**
+     * @var string View file name
+     */
     protected $_viewName = 'register';
 
     /**
      * @var string User selected plan
      */
     private $_selectedPlan = '';
-
-    /**
-     * @var string Register view name
-     */
-    private $_registerView = 'register';
 
     /**
      * @var null Subscription plans
@@ -69,8 +67,7 @@ class RegisterController extends BaseController {
         }
 
         // Render register view with all needed information
-        return $this->renderView();
-//        return $this->_renderRegisterView();
+        return $this->_renderRegisterView();
     }
 
 
@@ -79,38 +76,41 @@ class RegisterController extends BaseController {
      */
     public function processRegistration() {
 
-        // Get and validate subscription plan
+        // Get form inputs
         $this->_selectedPlan = Input::get('subscription-plan');
+        $this->_formEmail = Input::get('email');
+        $this->_userPassword = Input::get('password');
+        $this->_userPhoneNumber = Input::get('phone-number');
+        $this->_userPhoneNumberPrefix = Input::get('phone-number-prefix');
+
+
+        // Validate subscription plan
         $subscriptionDetailsModel = new SubscriptionDetailsModel();
         $subscriptionPlanErrors = $subscriptionDetailsModel->validateSubscriptionPlan($this->_selectedPlan);
         if (count($subscriptionPlanErrors)) {
             return $this->_renderRegisterView($subscriptionPlanErrors);
         }
 
-        // Get and validate email
-        $this->_formEmail = Input::get('email');
+        // Validate email
         $emailErrors = $this->_usersModel->validateEmail($this->_formEmail);
         if (count($emailErrors)) {
             return $this->_renderRegisterView($emailErrors);
         }
 
-        // Get and validate password
-        $this->_userPassword = Input::get('password');
+        // Validate password
         $passwordErrors = $this->_usersModel->validatePassword($this->_userPassword);
         if (count($passwordErrors)) {
             return $this->_renderRegisterView($passwordErrors);
         }
 
-        // Get and validate phone number prefix
-        $this->_userPhoneNumberPrefix = Input::get('phone-number-prefix');
+        // Validate phone number prefix
         $prefixesModel = new PrefixesModel();
         $phoneNumberPrefixErrors = $prefixesModel->validatePhoneNumberPrefix($this->_userPhoneNumberPrefix);
         if (count($phoneNumberPrefixErrors)) {
             return $this->_renderRegisterView($phoneNumberPrefixErrors);
         }
 
-        // Get and validate phone number
-        $this->_userPhoneNumber = Input::get('phone-number');
+        // Validate phone number
         $phoneNumbersModel = new PhoneNumbersModel();
         $phoneNumberErrors = $phoneNumbersModel->validatePhoneNumber($this->_userPhoneNumber);
         if (count($phoneNumberErrors)) {
@@ -119,13 +119,16 @@ class RegisterController extends BaseController {
 
         try {
             // Insert new user in database
-            $this->_usersModel->createNewUser(array(
+            $user = array(
                 'email' => $this->_formEmail,
                 'password' => $this->_userPassword,
                 'phoneNumber' => $this->_userPhoneNumber,
                 'phoneNumberPrefix' => $this->_userPhoneNumberPrefix,
                 'subscriptionPlan' => $this->_selectedPlan
-            ));
+            );
+            $this->_usersModel->createNewUser($user);
+
+            Event::fire('user.register', $user);
 
             return Redirect::to('welcome');
         } catch (Exception $e) {
@@ -180,39 +183,47 @@ class RegisterController extends BaseController {
     /**
      * Render and make available in register view the given key => value variables
      *
-     * @param array $variables key => value pairs to make available in view
+     * @param array $variables
+     * @return mixed
      */
     private function _renderRegisterView($variables = array()) {
+        $viewData = $this->_getViewData();
+        if (!count($variables)) {
+            return $this->renderView($viewData);
+        }
+        return $this->renderView(array_merge($variables, $viewData));
+    }
 
-        $variables['pageTitle'] = $this->_viewTitle;
-        $variables['countries'] = $this->_getCountries();
+
+    /**
+     * @return array
+     */
+    private function _getViewData() {
+        $viewData = array();
+
+        $viewData['countries'] = $this->_getCountries();
 
         // Check if a subscription plan is selected or exists in the url
         $subscriptionDetailsModel = new SubscriptionDetailsModel();
         if (!empty($this->_selectedPlan)) {
-            $variables['selectedPlan'] = $subscriptionDetailsModel->getNameByKey($this->_selectedPlan);
+            $viewData['selectedPlan'] = $subscriptionDetailsModel->getNameByKey($this->_selectedPlan);
         } else {
             $selectedPlan = Input::get('selected-plan');
             $subscriptionPlanErrors = $subscriptionDetailsModel->validateSubscriptionPlan($selectedPlan);
             if (!count($subscriptionPlanErrors)) {
-                $variables['selectedPlan'] = $subscriptionDetailsModel->getNameByKey($selectedPlan);
+                $viewData['selectedPlan'] = $subscriptionDetailsModel->getNameByKey($selectedPlan);
             }
         }
 
         // Get default country and prefix
         $prefixesModel = new PrefixesModel();
-        $variables['defaultPrefix'] = $prefixesModel->getDefaultPrefixAndCountry();
-
+        $viewData['defaultPrefix'] = $prefixesModel->getDefaultPrefixAndCountry();
+//        exit(var_dump($this->_userPhoneNumberPrefix));
         if (isset($this->_userPhoneNumberPrefix) && $this->_userPhoneNumberPrefix) {
             $countriesModel = new CountriesModel();
-            $variables['prefixCountry'] = $countriesModel->getByPrefix($this->_userPhoneNumberPrefix);
+            $viewData['prefixCountry'] = $countriesModel->getByPrefix($this->_userPhoneNumberPrefix);
         }
 
-        return View::make($this->_registerView, $variables);
-    }
-
-    protected function renderView($viewData = array()) {
-        $var = parent::renderView($viewData);
-        exit(print_r($var));
+        return $viewData;
     }
 }

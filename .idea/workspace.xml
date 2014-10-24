@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/.htaccess" afterPath="$PROJECT_DIR$/public/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/APIController.php" afterPath="$PROJECT_DIR$/app/controllers/APIController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/AccountController.php" afterPath="$PROJECT_DIR$/app/controllers/AccountController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascript/AccountSettings.js" afterPath="$PROJECT_DIR$/public/javascript/AccountSettings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ApplicationController.php" afterPath="$PROJECT_DIR$/app/controllers/ApplicationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ApplicationsController.php" afterPath="$PROJECT_DIR$/app/controllers/ApplicationsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/controllers/BaseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Chart.min.js" afterPath="$PROJECT_DIR$/public/Chart.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ContactController.php" afterPath="$PROJECT_DIR$/app/controllers/ContactController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ControlPanelController.php" afterPath="$PROJECT_DIR$/app/controllers/ControlPanelController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/DocsController.php" afterPath="$PROJECT_DIR$/app/controllers/DocsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/GetStartedController.php" afterPath="$PROJECT_DIR$/app/controllers/GetStartedController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/HelpController.php" afterPath="$PROJECT_DIR$/app/controllers/HelpController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/LogController.php" afterPath="$PROJECT_DIR$/app/controllers/LogController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/LoggerController.php" afterPath="$PROJECT_DIR$/app/controllers/LoggerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/LoginController.php" afterPath="$PROJECT_DIR$/app/controllers/LoginController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/PlansController.php" afterPath="$PROJECT_DIR$/app/controllers/PlansController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/RecoverController.php" afterPath="$PROJECT_DIR$/app/controllers/RecoverController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/SettingsController.php" afterPath="$PROJECT_DIR$/app/controllers/SettingsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/SystemController.php" afterPath="$PROJECT_DIR$/app/controllers/SystemController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/TestController.php" afterPath="$PROJECT_DIR$/app/controllers/TestController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/VerificationCodeController.php" afterPath="$PROJECT_DIR$/app/controllers/VerificationCodeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/admin-bar.blade.php" afterPath="$PROJECT_DIR$/app/views/includes/admin-bar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin-panel.blade.php" afterPath="$PROJECT_DIR$/app/views/admin-panel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/application.blade.php" afterPath="$PROJECT_DIR$/app/views/application.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/applications.blade.php" afterPath="$PROJECT_DIR$/app/views/applications.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/base-layout.blade.php" afterPath="$PROJECT_DIR$/app/views/base-layout.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/bootswatch.js" afterPath="$PROJECT_DIR$/public/bootswatch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/contact.blade.php" afterPath="$PROJECT_DIR$/app/views/contact.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/controlPanelIndexCharts.js" afterPath="$PROJECT_DIR$/public/controlPanelIndexCharts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/controlPanelUsersCharts.js" afterPath="$PROJECT_DIR$/public/controlPanelUsersCharts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/error-codes.blade.php" afterPath="$PROJECT_DIR$/app/views/error-codes.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/footer.blade.php" afterPath="$PROJECT_DIR$/app/views/includes/footer.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/get-started.blade.php" afterPath="$PROJECT_DIR$/app/views/get-started.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/header.blade.php" afterPath="$PROJECT_DIR$/app/views/includes/header.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/hello.php" afterPath="$PROJECT_DIR$/app/views/hello.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home-layout.blade.php" afterPath="$PROJECT_DIR$/app/views/home-layout.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home.blade.php" afterPath="$PROJECT_DIR$/app/views/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/jquery-min.js" afterPath="$PROJECT_DIR$/public/jquery-min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/login.blade.php" afterPath="$PROJECT_DIR$/app/views/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/new-logger.blade.php" afterPath="$PROJECT_DIR$/app/views/new-logger.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plans.blade.php" afterPath="$PROJECT_DIR$/app/views/plans.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/recover.blade.php" afterPath="$PROJECT_DIR$/app/views/recover.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/register.blade.php" afterPath="$PROJECT_DIR$/app/views/register.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascript/register.js" afterPath="$PROJECT_DIR$/public/javascript/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/emails/auth/reminder.blade.php" afterPath="$PROJECT_DIR$/app/views/emails/auth/reminder.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/robots.txt" afterPath="$PROJECT_DIR$/public/robots.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/script.js" afterPath="$PROJECT_DIR$/public/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sdks.blade.php" afterPath="$PROJECT_DIR$/app/views/sdks.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/setting-option-buttons.blade.php" afterPath="$PROJECT_DIR$/app/views/includes/setting-option-buttons.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/settings.blade.php" afterPath="$PROJECT_DIR$/app/views/settings.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/style.css" afterPath="$PROJECT_DIR$/public/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users.blade.php" afterPath="$PROJECT_DIR$/app/views/users.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/verification.blade.php" afterPath="$PROJECT_DIR$/app/views/verification.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" name="Default" comment="" />
     <ignored path="logapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1414124713660" ignored="false" />

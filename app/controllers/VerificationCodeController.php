@@ -5,22 +5,22 @@
  *
  * @author Alexandru Bugarin <alexandru.bugarin@gmail.com>
  */
-class VerificationCodeController extends BaseController {
+class VerificationCodeController extends BaseCOntroller {
 
     /**
-     * @var string Page title
-     */
-    protected $_viewTitle = "Two factor authentication";
-
-    /**
-     * @var string Verification view name
+     * @var string View file name
      */
     protected $_viewName = 'verification';
 
     /**
-     * @var string Page body id
+     * @var string View title
      */
-    protected $_bodyId = "verification-code-page";
+    protected $_viewTitle = 'Two factor auth verification code';
+
+    /**
+     * @var string View body id
+     */
+    protected $_bodyId = 'verification-code-page';
 
     /**
      * @var string Verification code entered by the user
@@ -49,14 +49,8 @@ class VerificationCodeController extends BaseController {
      * @return mixed
      */
     public function index() {
-
-        // Redirect not logged in users
-        if (!$this->_loggedIn) {
-            return Redirect::to('/');
-        }
-
-        // Check if a verification code was sent to the user
-        if (!$this->_isVerificationCodeRequired()) {
+        // Redirect if user is not logged in or verification code is not required
+        if (!$this->_loggedIn || !$this->_isVerificationCodeRequired()) {
             return Redirect::to('/');
         }
 

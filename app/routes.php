@@ -2,7 +2,7 @@
 /**
  * Routes for homepage
  */
-Route::get('', 'HomeController@index');
+Route::get('', 'HomeController@showHomepage');
 Route::get('home', 'HomeController@showHomepage');
 
 

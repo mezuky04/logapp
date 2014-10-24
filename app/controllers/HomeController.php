@@ -7,13 +7,25 @@
  */
 class HomeController extends BaseController {
 
+    /**
+     * @var string Home view name
+     */
     protected $_viewName = 'home';
-    protected $_bodyId = 'homepage';
 
     /**
-     * @var string Home page layout name
+     * @var string Home view title
      */
-    private $_homeLayout = 'home';
+    protected $_viewTitle = 'Home';
+
+    /**
+     * @var string Home view body id
+     */
+    protected $_bodyId = 'homepage';
+
+//    /**
+//     * @var string Home page layout name
+//     */
+//    private $_homeLayout = 'home';
 
     /**
      * @var int The number of last logs to display on homepage
@@ -35,48 +47,37 @@ class HomeController extends BaseController {
         return $this->renderView();
     }
 
-    private function _showLoggedInHomepage() {
-        //
-    }
 
-    private function _showNotLoggedInHomepage() {
-        //
-    }
-
-//    protected function renderView() {
-//        //
+//    /**
+//     * Render homepage
+//     *
+//     * @return mixed
+//     */
+//    public function showHomepage() {
+//
+//        // Get user las logs
+//        $logsModel = new LogsModel();
+//        $logs = $logsModel->getLastLogs($this->_numberOfLastLogsToDisplay, $this->_userId);
+//
+//        $view = View::make($this->_homeLayout);
+//
+//        if (!$logs) {
+//            return $view->with('noLogs', true);
+//        }
+//
+//        // Log user action
+//        try {
+//            $userActionLogsModel = new UserActionLogsModel();
+//            $userActionLogsModel->logAction("Accessed homepage", $this->_userId, 2);
+//        } catch (Exception $e) {
+//            // todo an exception handler
+//            exit($e->getMessage());
+//        }
+//
+//
+//        $view->with('lastLogs', $logs);
+//        $view->with('numberOfLogs', count($logs));
+//        return $view->with('maxLengths', $this->_maxLengths);
 //    }
-
-    /**
-     * Render homepage
-     *
-     * @return mixed
-     */
-    public function showHomepage() {
-
-        // Get user las logs
-        $logsModel = new LogsModel();
-        $logs = $logsModel->getLastLogs($this->_numberOfLastLogsToDisplay, $this->_userId);
-
-        $view = View::make($this->_homeLayout);
-
-        if (!$logs) {
-            return $view->with('noLogs', true);
-        }
-
-        // Log user action
-        try {
-            $userActionLogsModel = new UserActionLogsModel();
-            $userActionLogsModel->logAction("Accessed homepage", $this->_userId, 2);
-        } catch (Exception $e) {
-            // todo an exception handler
-            exit($e->getMessage());
-        }
-
-
-        $view->with('lastLogs', $logs);
-        $view->with('numberOfLogs', count($logs));
-        return $view->with('maxLengths', $this->_maxLengths);
-    }
 
 }

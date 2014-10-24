@@ -214,15 +214,15 @@ class BaseController extends Controller {
     }
 
 
-    /**
-     * Append application name to view title
-     */
-    private function _processViewTitle() {
-        if (!isset($this->_viewTitle)) {
-            $this->_viewTitle = $this->_defaultViewTitle;
-            return;
-        }
-
-        $this->_viewTitle = $this->_viewTitle . $this->_appendToViewTitle;
-    }
+//    /**
+//     * Append application name to view title
+//     */
+//    private function _processViewTitle() {
+//        if (!isset($this->_viewTitle)) {
+//            $this->_viewTitle = $this->_defaultViewTitle;
+//            return;
+//        }
+//
+//        $this->_viewTitle = $this->_viewTitle . $this->_appendToViewTitle;
+//    }
 }

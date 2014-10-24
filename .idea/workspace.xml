@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" name="Default" comment="" />
+    <list default="true" id="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/controllers/BaseController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" />
+    </list>
     <ignored path="logapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1414089671124" ignored="false" />
@@ -15,8 +18,8 @@
     <file path="/register.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1413829186786" ignored="false" />
     <file path="/AccountController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1407153014359" ignored="false" />
     <file path="/home.blade.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1407402110645" ignored="false" />
-    <file path="/HomeController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1414086880320" ignored="false" />
-    <file path="/BaseController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1414087666047" ignored="false" />
+    <file path="/HomeController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1414124062520" ignored="false" />
+    <file path="/BaseController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1414123991234" ignored="false" />
     <file path="/SystemController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1406015842143" ignored="false" />
     <file path="/LogsModel.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1411705273246" ignored="false" />
     <file path="/LoggerController.php" changelist="a646a00d-d0f1-4eb6-94d3-e10bee70e3fc" time="1406123926812" ignored="false" />
@@ -109,7 +112,7 @@
       <file leaf-file-name="HomeController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="35" selection-start="746" selection-end="746" vertical-scroll-proportion="0.27868852">
+            <state line="80" column="7" selection-start="961" selection-end="1880" vertical-scroll-proportion="0.87894076">
               <folding />
             </state>
           </provider>
@@ -127,7 +130,7 @@
       <file leaf-file-name="RegisterController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="217" column="1" selection-start="6775" selection-end="6775" vertical-scroll-proportion="0.0">
+            <state line="213" column="4" selection-start="6640" selection-end="6773" vertical-scroll-proportion="-23.461538">
               <folding />
             </state>
           </provider>
@@ -154,7 +157,7 @@
       <file leaf-file-name="BaseController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="78" selection-start="3020" selection-end="3020" vertical-scroll-proportion="0.0">
+            <state line="137" column="65" selection-start="3007" selection-end="3007" vertical-scroll-proportion="-7.769231">
               <folding />
             </state>
           </provider>
@@ -188,12 +191,12 @@
         <option value="$PROJECT_DIR$/app/views/login.blade.php" />
         <option value="$PROJECT_DIR$/public/script.js" />
         <option value="$PROJECT_DIR$/app/routes.php" />
-        <option value="$PROJECT_DIR$/app/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/views/base-layout.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
         <option value="$PROJECT_DIR$/app/controllers/VerificationCodeController.php" />
         <option value="$PROJECT_DIR$/app/controllers/LoginController.php" />
         <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -635,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="78" selection-start="3020" selection-end="3020" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/AccountController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -656,13 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="1" selection-start="6775" selection-end="6775" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/VerificationCodeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="22" selection-start="1282" selection-end="1282" vertical-scroll-proportion="-0.65384614">
@@ -670,9 +659,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="65" selection-start="3007" selection-end="3007" vertical-scroll-proportion="-7.769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="213" column="4" selection-start="6640" selection-end="6773" vertical-scroll-proportion="-23.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="35" selection-start="746" selection-end="746" vertical-scroll-proportion="0.27868852">
+        <state line="80" column="7" selection-start="961" selection-end="1880" vertical-scroll-proportion="0.87894076">
           <folding />
         </state>
       </provider>

@@ -24,8 +24,20 @@ class LogsModel extends BaseModel {
         'Level',
         'Message',
         'Line',
-        'File'
+        'File',
+        'Timestamp'
     );
+
+    /**
+     * @var string Applications table name
+     */
+    private $_applicationsTable = 'Applications';
+
+    /**
+     * @var int The number of logs displayed in a feed post
+     */
+    private $_numberOfLogsInPost = 7;
+
 
     /**
      * Get details about the log that match the given $logId
@@ -39,6 +51,49 @@ class LogsModel extends BaseModel {
         return $query->first();
     }
 
+    public function getUserFeed($userId) {
+        // Validate parameter
+        if (!is_numeric($userId)) {
+            throw new Exception("Invalid user id");
+        }
+
+        // Get all applications of the current user that contains logs
+        $applicationsModel = new ApplicationsModel();
+        $userApplications = $applicationsModel->getUserApplicationWithLogs($userId, 1);
+
+        $results = array();
+
+        // Get logs of each application
+        foreach ($userApplications as $userApplication) {
+            $results[] = array(
+                'ApplicationId' => $userApplication->ApplicationId,
+                'Name' => $userApplication->Name,
+                'Logs' => $this->getApplicationLogs($userApplication->ApplicationId),
+                'NumberOfLogs' => $this->countAppLogs($userApplication->ApplicationId),
+                'LogsInPost' => $this->_numberOfLogsInPost
+            );
+        }
+        return $results;
+    }
+
+    public function getApplicationLogs($applicationId, $limit = 0) {
+        // Validate application id
+        if (!is_numeric($applicationId)) {
+            throw new Exception("Invalid application id");
+        }
+
+        if (!$limit || $limit < 1) {
+            $limit = $this->_numberOfLogsInPost;
+        }
+
+        // Build sql
+        $sql = "SELECT Level, Message, Line, File ";
+        $sql .= "FROM {$this->_tableName} ";
+        $sql .= "WHERE ApplicationId = ? ";
+        $sql .= "LIMIT {$limit}";
+
+        return DB::select($sql, array($applicationId));
+    }
 
     /**
      * Get last $limit logs

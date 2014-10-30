@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-static-top">
+<div class="navbar navbar-inverse navbar-<?php if(isset($fixedHeader)): ?>fixed<?php else: ?>static<?php endif; ?>-top">
     <div class="container">
         <div class="navbar-header">
             <a href="<?php echo URL::to('/'); ?>" class="navbar-brand">LogApp.co</a>

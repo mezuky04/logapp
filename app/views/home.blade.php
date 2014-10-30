@@ -46,62 +46,86 @@ if (!isset($loggedIn)): ?>
         </div>
     </div>
 <?php elseif(isset($loggedIn)): ?>
-    <?php if(isset($noLogs)): ?>
-        <h3 class="text-primary">You don't have any logs</h3>
-    <?php else: ?>
-        <h3 class="text-primary">Last <?php echo $numberOfLogs; ?> logs: </h3>
-        <table class="table table-striped table-hover ">
-            <thead>
-            <tr>
-                <th>Log level</th>
-                <th>Message</th>
-                <th>Line</th>
-                <th>File</th>
-                <th>Application</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach($lastLogs as $log): ?>
-                <tr>
-                    <?php
-                        $textColor = "";
-                        switch($log->Level) {
-                            case "info":
-                                $textColor = "text-success";
-                                break;
-                            case "debug":
-                                $textColor = "text-info";
-                                break;
-                            case "warning":
-                                $textColor = "text-primary";
-                                break;
-                            case "error":
-                                $textColor = "text-warning";
-                                break;
-                            case "emergency":
-                                $textColor = "text-danger";
-                                break;
-                        }
-                    ?>
-                    <td>
-                        <strong class="<?php echo $textColor; ?>">
-                            <?php echo $log->Level; ?>
-                        </strong>
-                    </td>
-                    <td>
-                        <?php if(strlen($log->Message) > $maxLengths['message']): ?>
-                            <?php echo substr($log->Message, 0, $maxLengths['message'] - 3).'...'; ?>
-                        <?php else: ?>
-                            <?php echo $log->Message; ?>
-                        <?php endif; ?>
-                    </td>
-                    <td><?php echo $log->Line; ?></td>
-                    <td><?php echo $log->File; ?></td>
-                    <td><a href="#">Bitller</a></td>
-                </tr>
+    <?php if(!empty($userFeed) && count($userFeed) > 1): ?>
+
+        <!-- BEGIN Logs feed -->
+        <div class="logs-feed">
+            <?php foreach ($userFeed as $feedPost): ?>
+                <div class="feed-post">
+                    <div class="app">
+                        <div class="app-icon"><img src="<?php echo URL::to('icons/home/application.png'); ?>"></div>
+                        <div class="app-name"><?php echo $feedPost['Name']; ?></div>
+                    </div>
+                    <div class="app-logs">
+                        <?php $evidence = true; ?>
+                        <?php foreach($feedPost['Logs'] as $log): ?>
+                            <?php
+                                // Check what log class should be displayed
+                                if($evidence) {
+                                    $class = 'app-log';
+                                    $evidence = false;
+                                } else {
+                                    $class = 'app-log-obscure';
+                                    $evidence = true;
+                                }
+                                // Select a color in base of log level
+                                $textColor = "";
+                                switch($log->Level) {
+                                    case "info":
+                                        $textColor = "text-success";
+                                        break;
+                                    case "debug":
+                                        $textColor = "text-info";
+                                        break;
+                                    case "warning":
+                                        $textColor = "text-primary";
+                                        break;
+                                    case "error":
+                                        $textColor = "text-warning";
+                                        break;
+                                    case "emergency":
+                                        $textColor = "text-danger";
+                                        break;
+                                }
+                            ?>
+                            <div class="<?php echo $class; ?>">
+                                <div class="log-level <?php echo $textColor; ?>"><?php echo ucfirst($log->Level); ?></div>
+                                <div class="line-number">
+                                    <span class="line-icon">#</span><?php echo $log->Line; ?>
+                                </div>
+                                <div class="message">
+                                    <img src="<?php echo URL::to('icons/home/log-message.png'); ?>" class="log-message-icon">
+                                    <span><?php echo $log->Message; ?></span>
+                                </div>
+                                <div class="file">
+                                    <img src="<?php echo URL::to('icons/home/log-file.png'); ?>" class="log-file">
+                                    <span><?php //echo $log->File; ?></span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php if($feedPost['NumberOfLogs'] > $feedPost['LogsInPost']): ?>
+                        <div class="more-logs">
+                            <span class="more-logs-text">Show more logs</span>
+                        </div>
+                    <?php endif; ?>
+                </div>
             <?php endforeach; ?>
-            </tbody>
-        </table>
+        </div>
+        <!-- END Logs feed -->
+
+        <!-- BEGIN Logs statistics -->
+        <div class="logs-statistics">
+            <div class="statistics-title">Statistics</div>
+        </div>
+        <!-- END Logs statistics -->
+
+    <?php elseif (!empty($userFeed) && count($userFeed) == 1): ?>
+        <!-- Display user feed with one post -->
+    <?php elseif (isset($feedError)): ?>
+        <!-- User feed was not returned. An error occurred -->
+    <?php else: ?>
+        <!-- No feed available, display something else -->
     <?php endif; ?>
 <?php endif; ?>
 @stop

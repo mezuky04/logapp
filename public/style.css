@@ -610,8 +610,117 @@ body {
   ==============================
 */
 
-/** Homepage */
+#homepage .logs-feed {
+    display: inline-block;
+    margin-top: 80px;
+}
 
+#homepage .feed-post {
+    width: 820px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 2px solid #f4f4f4;
+}
+
+#homepage .app {
+    margin-bottom: 15px;
+}
+
+#homepage .app-icon, #homepage .app-name {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 16px;
+}
+
+#homepage .app-icon {
+    margin-right: 5px;
+}
+
+#homepage .app-log, #homepage .app-log-obscure {
+    background-color: #ffffff;
+    height: 40px;
+    width: 790px;
+    line-height: 38px;
+    vertical-align: middle;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #6C7A89;
+}
+
+#homepage .app-log-obscure {
+    background-color: #f9f9f9;
+}
+
+#homepage .app-log:hover, #homepage .app-log-obscure:hover {
+    background-color: #ECF0F1;
+    cursor: pointer;
+}
+
+#homepage .app-log .log-level, #homepage .app-log-obscure .log-level {
+    display: inline-block;
+    font-weight: bold;
+    width: 65px;
+}
+
+#homepage .app-log .line-number, #homepage .app-log-obscure .line-number {
+    display: inline-block;
+    width: 60px;
+}
+
+#homepage .app-log .line-number, #homepage .app-log-obscure .line-number {
+    font-weight: bold;
+}
+
+#homepage .app-log .message, #homepage .app-log-obscure .message {
+    display: inline-block;
+    width: 350px;
+}
+
+#homepage .message span {
+
+}
+
+#homepage .file {
+    display: inline-block;
+}
+
+#homepage .more-logs {
+    width: 790px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#homepage .more-logs .more-logs-text {
+    color: #6C7A89;
+}
+
+#homepage .more-logs .more-logs-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#homepage .logs-statistics {
+    display: inline-block;
+    height: 400px;
+    width: 320px;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #f4f4f4;
+    border-radius: 5px;
+    vertical-align: top;
+    position: fixed;
+    margin-left: 15px;
+    margin-top: 80px;
+    padding: 10px 15px 10px 15px;
+}
+
+#homepage .statistics-title {
+    font-size: 20px;
+    color: #6C7A89;
+}
+
+/** Homepage */
 .homepage-header {
     background-color: #18BC9C;
     width: 100%;

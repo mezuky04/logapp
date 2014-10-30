@@ -22,6 +22,8 @@ class HomeController extends BaseController {
      */
     protected $_bodyId = 'homepage';
 
+    protected $_fixedHeader = false;
+
     /**
      * @var int The number of last logs to display on homepage
      */
@@ -46,6 +48,7 @@ class HomeController extends BaseController {
             return $this->renderView();
         }
 
+        $this->_fixedHeader = true;
         Event::fire('page.accessed', $this->_userId);
         return $this->renderView($this->_getViewData());
     }
@@ -59,16 +62,18 @@ class HomeController extends BaseController {
     private function _getViewData() {
         $viewData = array();
 
-        // Get user last logs
         $logsModel = new LogsModel();
-        $logs = $logsModel->getLastLogs($this->_numberOfLastLogsToDisplay, $this->_userId);
-        if (!$logs) {
-            return array('noLogs' => true);
-        }
-
-        $viewData['lastLogs'] = $logs;
-        $viewData['numberOfLogs'] = count($logs);
-        $viewData['maxLengths'] = $this->_maxLengths;
+        $viewData['userFeed'] = $logsModel->getUserFeed($this->_userId);
+//        // Get user last logs
+//        $logsModel = new LogsModel();
+//        $logs = $logsModel->getLastLogs($this->_numberOfLastLogsToDisplay, $this->_userId);
+//        if (!$logs) {
+//            return array('noLogs' => true);
+//        }
+//
+//        $viewData['lastLogs'] = $logs;
+//        $viewData['numberOfLogs'] = count($logs);
+//        $viewData['maxLengths'] = $this->_maxLengths;
         return $viewData;
     }
 }

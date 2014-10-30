@@ -5,13 +5,45 @@
  *
  * @author Alexandru Bugarin <alexandru.bugarin@gmail.com>
  */
-class ApplicationsModel {
+class ApplicationsModel extends BaseModel {
 
     /**
      * @var string Table name
      */
-    private $_tableName = 'Applications';
+    protected $_tableName = 'Applications';
 
+    /**
+     * @var array Table fields
+     */
+    protected $_tableFields = array(
+        'ApplicationId',
+        'Name',
+        'UserId',
+        'LastLogTimestamp'
+    );
+
+
+    public function getUserApplicationWithLogs($userId, $limit) {
+        // Validate parameters
+        if (!is_numeric($userId)) {
+            throw new Exception("Invalid user id given");
+        }
+        if (!is_numeric($limit) || $limit < 1) {
+            throw new Exception("Invalid limit given");
+        }
+
+        // Build sql
+        $sql = "SELECT ApplicationId, Name ";
+        $sql .= "FROM {$this->_tableName} ";
+        $sql .= "WHERE UserId = ? ";
+        $sql .= "AND LastLogTimestamp IS NOT NULL ";
+        $sql .= "GROUP BY ApplicationId ";
+        $sql .= "ORDER BY LastLogTimestamp DESC ";
+        $sql .= "LIMIT 0,{$limit}";
+
+        // Run query
+        return DB::select($sql, array($userId));
+    }
 
     /**
      * Get all applications for the given user id

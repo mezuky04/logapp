@@ -10,6 +10,7 @@
 class BaseController extends Controller {
     protected $_viewName = '';
     protected $_bodyId = '';
+    protected $_fixedHeader = false;
     /**
      * @var int User id
      */
@@ -75,8 +76,6 @@ class BaseController extends Controller {
         // Make data available to all views
         $this->_makeAvailableInAllViews();
 
-//        $this->_processViewTitle();
-
         // Call before filter
         $this->beforeFilter(function() {
             return $this->_isVerificationCodeRequired();
@@ -118,6 +117,9 @@ class BaseController extends Controller {
         }
         if (!empty($this->_bodyId)) {
             $viewData['bodyId'] = $this->_bodyId;
+        }
+        if ($this->_fixedHeader) {
+            $viewData['fixedHeader'] = true;
         }
 
         // Render view
